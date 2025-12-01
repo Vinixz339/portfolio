@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title data-l18n="page-title-projects">Projetos — Vinícius Franco Rocha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Projetos reais de ITSM (GLPI, Service Aide), automações e chatbots (Genesys Cloud) desenvolvidos por Vinícius Franco Rocha." />
+
+  <!-- SEO / Social -->
+  <link rel="canonical" href="projetos.html" />
+  <meta property="og:title" content="Projetos — Vinícius Franco Rocha" />
+  <meta property="og:description" content="Implementações e sustentação em ITSM, automações e chatbots. Processos sólidos, métricas e governança." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0A0A0B" />
+  <link rel="icon" type="image/png" href="LOGONOVA.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lib de animações -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="projects">
+  <!-- Fundo -->
+  <canvas id="sparkCanvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="logo">
+      <a href="index.html" aria-label="Página inicial">
+        <img src="VTECH.png" alt="Marca pessoal de Vinícius Franco Rocha" />
+      </a>
+    </div>
+
+    <nav id="mainNav" class="nav-links" aria-label="Menu principal">
+      <a href="index.html#about" data-page-target="home" data-l18n="nav-about">Sobre</a>
+      <a href="projetos.html" class="active" data-page-target="projects" data-l18n="nav-projects">Projetos</a>
+      <a href="contato.html" data-page-target="contact" data-l18n="nav-contact">Contato</a>
+    </nav>
+
+    <div class="header-actions">
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-label="Abrir menu principal"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="language-container">
+        <button id="languageButton" aria-haspopup="true" aria-expanded="false" aria-label="Escolher idioma">
+          <img src="LANGUAGE.svg" alt="Selecionar idioma" loading="lazy" />
+          <span class="language-label">PT</span>
+        </button>
+        <div class="language-dropdown" id="languageDropdown" role="menu">
+          <button type="button" data-lang="pt">PT</button>
+          <button type="button" data-lang="en">EN</button>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="main-content" role="main">
+    <!-- Hero / Intro -->
+    <section class="section" aria-labelledby="projects-title">
+      <div class="section-header" data-aos="fade-up">
+        <p class="section-eyebrow" data-l18n="projects-eyebrow">Portfólio</p>
+        <h1 id="projects-title" class="section-title" data-l18n="projects-hero-title">Projetos selecionados</h1>
+        <p class="section-description" data-l18n="projects-hero-description">
+          Casos reais em ITSM, automações e chatbots. Foco em governança, métricas e experiência do usuário.
+        </p>
+      </div>
+
+      <!-- Grid de projetos (cards sólidos, sem glass) -->
+      <div class="projects-container">
+        <!-- SABIN -->
+        <article class="project-item tilt" data-aos="fade-up" data-year="2025-Atual" data-area="ITSM" data-stack="GLPI,Power BI,Regras,Processos" data-l18n="projects-card-1" data-l18n-target="innerHTML">
+          <div class="project-text">
+            <h3 class="project-title">SABIN - Sustentação de ITSM (GLPI)</h3>
+            <div class="project-meta">
+              <span class="chip">Área: ITSM</span>
+              <span class="chip">Plataforma: GLPI</span>
+              <span class="chip">Ano: 2025-Atual</span>
+              <a class="chip link-chip" href="https://sabin.com.br/" target="_blank" rel="noopener" aria-label="Abrir site da SABIN">sabin.com.br</a>
+            </div>
+            <p class="project-lead">
+              Sustentação e evolução contínua do ambiente GLPI com foco em estabilidade, previsibilidade e experiência.
+              Atendimento de chamados de 2º nível, governança do catálogo e otimizações recorrentes.
+            </p>
+            <ul class="project-scope">
+              <li>Regras de negócio, campos condicionais e roteamento por filas;</li>
+              <li>Padronização de formulários, templates e checklists;</li>
+              <li>SLAs/OLAs, notificações e alertas operacionais;</li>
+              <li>Relatórios e KPIs no Power BI para tomadas de decisão.</li>
+            </ul>
+            <div class="project-techstack">
+              <div class="tech-label" data-l18n="proj-techs-label">Tecnologias</div>
+              <div class="tech-chips">
+                <span class="chip">GLPI</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Automação</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">APIs</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- GERA -->
+        <article class="project-item tilt" data-aos="fade-up" data-aos-delay="80" data-year="2025-Atual" data-area="ITSM" data-stack="GLPI,Power Automate,n8n,APIs" data-l18n="projects-card-2" data-l18n-target="innerHTML">
+          <div class="project-text">
+            <h3 class="project-title">GERA - Implementação e Sustentação de ITSM (GLPI)</h3>
+            <div class="project-meta">
+              <span class="chip">Área: ITSM</span>
+              <span class="chip">Plataforma: GLPI</span>
+              <span class="chip">Ano: 2025-Atual</span>
+              <a class="chip link-chip" href="https://gera.com.br/" target="_blank" rel="noopener" aria-label="Abrir site da GERA">gera.com.br</a>
+            </div>
+            <p class="project-lead">
+              Implantação ponta a ponta com catálogo, SLAs e fluxos de aprovação.
+              Operação assistida pós go-live, automações de triagem e relatórios recorrentes.
+            </p>
+            <ul class="project-scope">
+              <li>Desenho de processos (Incidente, Requisição, Mudança);</li>
+              <li>Campos condicionais, formulários e validações;</li>
+              <li>Integrações essenciais (e-mail/Teams) e automações;</li>
+              <li>KPIs operacionais e governança de mudanças.</li>
+            </ul>
+            <div class="project-techstack">
+              <div class="tech-label" data-l18n="proj-techs-label">Tecnologias</div>
+              <div class="tech-chips">
+                <span class="chip">GLPI</span>
+                <span class="chip">n8n</span>
+                <span class="chip">Power Automate</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Power BI</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- STOLLER / CORTEVA -->
+        <article class="project-item tilt" data-aos="fade-up" data-aos-delay="120" data-year="2025-Atual" data-area="ITSM" data-stack="Service Aide,Processos,Automação" data-l18n="projects-card-3" data-l18n-target="innerHTML">
+          <div class="project-text">
+            <h3 class="project-title">STOLLER / CORTEVA - Sustentação de ITSM (Service Aide)</h3>
+            <div class="project-meta">
+              <span class="chip">Área: ITSM</span>
+              <span class="chip">Plataforma: Service Aide</span>
+              <span class="chip">Ano: 2025-Atual</span>
+              <a class="chip link-chip" href="https://www.stoller.com.br/" target="_blank" rel="noopener" aria-label="Abrir site da Stoller">stoller.com.br</a>
+            </div>
+            <p class="project-lead">
+              Sustentação com padronização de filas, perfis e regras automáticas.
+              Foco em fluidez de atendimento, governança do catálogo e confiabilidade operacional.
+            </p>
+            <ul class="project-scope">
+              <li>Estruturação de filas, papéis e matrizes de encaminhamento;</li>
+              <li>Ajustes de formulários e automações de rotina;</li>
+              <li>SLAs, notificações e alertas por criticidade;</li>
+              <li>Higienização de base (categorias, serviços, CIs).</li>
+            </ul>
+            <div class="project-techstack">
+              <div class="tech-label" data-l18n="proj-techs-label">Tecnologias</div>
+              <div class="tech-chips">
+                <span class="chip">Service Aide</span>
+                <span class="chip">Automação</span>
+                <span class="chip">APIs</span>
+                <span class="chip">Relatórios</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- AGROLINE -->
+        <article class="project-item tilt" data-aos="fade-up" data-aos-delay="160" data-year="2024-2025" data-area="ITSM" data-stack="Service Aide,Processos,Automação" data-l18n="projects-card-4" data-l18n-target="innerHTML">
+          <div class="project-text">
+            <h3 class="project-title">AGROLINE - Sustentação de ITSM (Service Aide)</h3>
+            <div class="project-meta">
+              <span class="chip">Área: ITSM</span>
+              <span class="chip">Plataforma: Service Aide</span>
+              <span class="chip">Ano: 2024-2025</span>
+              <a class="chip link-chip" href="https://axiaagro.com/" target="_blank" rel="noopener" aria-label="Abrir site da Agroline (AxiaAgro)">axiaagro.com</a>
+            </div>
+            <p class="project-lead">
+              Sustentação com evolução de processos, administração da plataforma e atendimento de chamados.
+              Regras e integrações para reduzir tempo de ciclo e aumentar a previsibilidade.
+            </p>
+            <ul class="project-scope">
+              <li>Catálogo de serviços e padronização de formulários;</li>
+              <li>Regras automáticas e roteamento por filas;</li>
+              <li>SLAs/OLAs e notificações consistentes;</li>
+              <li>Relatórios operacionais e executivos.</li>
+            </ul>
+            <div class="project-techstack">
+              <div class="tech-label" data-l18n="proj-techs-label">Tecnologias</div>
+              <div class="tech-chips">
+                <span class="chip">Service Aide</span>
+                <span class="chip">Automação</span>
+                <span class="chip">APIs</span>
+                <span class="chip">Relatórios</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- IRANI -->
+        <article class="project-item tilt tilt-enabled" data-aos="fade-up" data-aos-delay="160" data-year="2025-Atual" data-area="Chatbots" data-stack="Genesys,Teams,WhatsApp,Integrações" data-l18n="projects-card-5" data-l18n-target="innerHTML">
+          <div class="project-text">
+            <h3 class="project-title">IRANI - Implementação e Sustentação de Chatbot (Genesys Cloud)</h3>
+            <div class="project-meta">
+              <span class="chip">Área: Chatbots</span>
+              <span class="chip">Plataforma: Genesys Cloud</span>
+              <span class="chip">Canais: Teams/WhatsApp</span>
+              <span class="chip">Ano: 2025-Atual</span>
+              <a class="chip link-chip" href="https://irani.com.br/" target="_blank" rel="noopener" aria-label="Abrir site da IRANI">irani.com.br</a>
+            </div>
+            <p class="project-lead">
+              Assistente conversacional com dispatch para filas no Genesys, integrado a Teams e WhatsApp.
+              Fluxo de conversa orientado por dados, transbordo humano e integrações a sistemas internos.
+            </p>
+            <ul class="project-scope">
+              <li>Mapeamento de intents, entidades e jornadas de suporte;</li>
+              <li>Roteamento e transbordo com contexto para as filas corretas;</li>
+              <li>Mensagens padrão, linguagem consistente e coleta de feedback;</li>
+              <li>Logs e métricas para tuning e melhoria contínua.</li>
+            </ul>
+            <div class="project-techstack">
+              <div class="tech-label" data-l18n="proj-techs-label">Tecnologias</div>
+              <div class="tech-chips">
+                <span class="chip">Genesys Cloud</span>
+                <span class="chip">Teams</span>
+                <span class="chip">WhatsApp</span>
+                <span class="chip">APIs</span>
+                <span class="chip">Conversational UX</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-logo" data-l18n="footer-logo">Vinícius Franco Rocha</div>
+      <div class="footer-social">
+        <a href="https://github.com/seuPerfil" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="GITHUB.svg" alt="GitHub" loading="lazy" />
+        </a>
+        <a href="mailto:vinfranrocha@gmail.com" aria-label="E-mail">
+          <img src="GMAIL.svg" alt="Gmail" loading="lazy" />
+        </a>
+        <a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="LINKEDIN.svg" alt="LinkedIn" loading="lazy" />
+        </a>
+      </div>
+      <p data-l18n="footer-rights">© 2025 Vinícius Franco Rocha. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Ícones -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js" defer></script>
+
+  <!-- JS principal (i18n, tilt, canvas, header sticky, modais) -->
+  <script src="script.js" defer></script>
+
+  <noscript>Ative o JavaScript para ver animações e interações.</noscript>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

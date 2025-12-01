@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title data-l18n="page-title-contact">Contato — Vinícius Franco Rocha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Fale com Vinícius Franco Rocha sobre ITSM, automações e chatbots. Respondo com plano objetivo e próximos passos." />
+
+  <!-- SEO / Social -->
+  <link rel="canonical" href="contato.html" />
+  <meta property="og:title" content="Contato — Vinícius Franco Rocha" />
+  <meta property="og:description" content="Entre em contato para falar sobre ITSM, automações e chatbots com governança e métricas." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0A0A0B" />
+  <link rel="icon" type="image/png" href="LOGONOVA.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lib de animações -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="contact">
+  <!-- Fundo -->
+  <canvas id="sparkCanvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="logo">
+      <a href="index.html" aria-label="Página inicial">
+        <img src="VTECH.png" alt="Marca pessoal de Vinícius Franco Rocha" />
+      </a>
+    </div>
+
+    <nav id="mainNav" class="nav-links" aria-label="Menu principal">
+      <a href="index.html#about" data-page-target="home" data-l18n="nav-about">Sobre</a>
+      <a href="projetos.html" data-page-target="projects" data-l18n="nav-projects">Projetos</a>
+      <a href="contato.html" class="active" data-page-target="contact" data-l18n="nav-contact">Contato</a>
+    </nav>
+
+    <div class="header-actions">
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-label="Abrir menu principal"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="language-container">
+        <button id="languageButton" aria-haspopup="true" aria-expanded="false" aria-label="Escolher idioma">
+          <img src="LANGUAGE.svg" alt="Selecionar idioma" loading="lazy" />
+          <span class="language-label">PT</span>
+        </button>
+        <div class="language-dropdown" id="languageDropdown" role="menu">
+          <button type="button" data-lang="pt">PT</button>
+          <button type="button" data-lang="en">EN</button>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="main-content" role="main">
+    <section class="section" aria-labelledby="contact-title">
+      <div class="section-header" data-aos="fade-up">
+        <p class="section-eyebrow" data-l18n="contact-eyebrow">Contato</p>
+        <h1 class="section-title" id="contact-title" data-l18n="contact-hero-title">Vamos conversar</h1>
+        <p class="section-description" data-l18n="contact-hero-description">
+          Compartilhe rapidamente o contexto da sua operação. Eu retorno com próximos passos objetivos.
+        </p>
+      </div>
+
+      <div class="contact-single-card" data-aos="fade-up">
+        <div class="contact-info-inline">
+          <h3 data-l18n="contact-info-title">Informações diretas</h3>
+          <ul class="contact-info-list">
+            <li class="contact-info-item">
+              <span class="contact-icon"><ion-icon name="location-outline" aria-hidden="true"></ion-icon></span>
+              <div class="contact-info-text">
+                <span class="contact-info-label">Local</span>
+                <span class="contact-info-value" data-l18n="contact-info-location">Santo André · SP</span>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <span class="contact-icon"><ion-icon name="mail-outline" aria-hidden="true"></ionicon></span>
+              <div class="contact-info-text">
+                <span class="contact-info-label">E-mail</span>
+                <a class="contact-info-value" href="mailto:vinfranrocha@gmail.com" data-l18n="contact-info-email">vinfranrocha@gmail.com</a>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <span class="contact-icon"><ion-icon name="call-outline" aria-hidden="true"></ionicon></span>
+              <div class="contact-info-text">
+                <span class="contact-info-label">Telefone</span>
+                <a class="contact-info-value" href="tel:+5511997806037" data-l18n="contact-info-phone">(11) 99780-6037</a>
+              </div>
+            </li>
+            <li class="contact-info-item">
+              <span class="contact-icon"><ion-icon name="logo-linkedin" aria-hidden="true"></ionicon></span>
+              <div class="contact-info-text">
+                <span class="contact-info-label">LinkedIn</span>
+                <a class="contact-info-value" href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" data-l18n="contact-info-linkedin">LinkedIn</a>
+              </div>
+            </li>
+          </ul>
+          <div class="contact-actions">
+            <a class="contact-cta primary" href="mailto:vinfranrocha@gmail.com" data-l18n="contact-cta-email">Enviar e-mail</a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h3 data-l18n="contact-form-title">Formulário</h3>
+          <div id="form-status" class="muted" aria-live="polite" style="min-height:1.25rem;"></div>
+
+          <form
+            action="https://formsubmit.co/vinfranrocha@gmail.com"
+            method="POST"
+            class="contact-form"
+            autocomplete="on"
+            novalidate
+          >
+            <input type="hidden" name="_subject" value="Contato via portfólio" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="contato.html?sent=1" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" />
+
+            <div class="form-group">
+              <label for="name"><span data-l18n="contact-form-name-label">Nome</span></label>
+              <input id="name" type="text" name="name" required minlength="2" maxlength="60" autocomplete="name" data-l18n="contact-form-name-placeholder" data-l18n-target="placeholder" placeholder="Seu nome completo" />
+            </div>
+
+            <div class="form-group">
+              <label for="email"><span data-l18n="contact-form-email-label">E-mail</span></label>
+              <input id="email" type="email" name="email" required maxlength 80 autocomplete="email" inputmode="email" data-l18n="contact-form-email-placeholder" data-l18n-target="placeholder" placeholder="seu@email.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="phone"><span data-l18n="contact-form-phone-label">Telefone (opcional)</span></label>
+              <input id="phone" type="tel" name="phone" maxlength="20" autocomplete="tel" inputmode="tel" data-l18n="contact-form-phone-placeholder" data-l18n-target="placeholder" placeholder="(11) 99999-9999" />
+            </div>
+
+            <div class="form-group">
+              <label for="message"><span data-l18n="contact-form-message-label">Mensagem</span></label>
+              <textarea id="message" name="message" rows="6" required maxlength="1200" data-l18n="contact-form-message-placeholder" data-l18n-target="placeholder" placeholder="Explique brevemente o contexto e o objetivo."></textarea>
+            </div>
+
+            <button type="submit" class="hero-cta primary" data-l18n="contact-form-submit" aria-label="Enviar mensagem">
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-logo" data-l18n="footer-logo">Vinícius Franco Rocha</div>
+      <div class="footer-social">
+        <a href="https://github.com/seuPerfil" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="GITHUB.svg" alt="GitHub" loading="lazy" />
+        </a>
+        <a href="mailto:vinfranrocha@gmail.com" aria-label="E-mail">
+          <img src="GMAIL.svg" alt="Gmail" loading="lazy" />
+        </a>
+        <a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="LINKEDIN.svg" alt="LinkedIn" loading="lazy" />
+        </a>
+      </div>
+      <p data-l18n="footer-rights">© 2025 Vinícius Franco Rocha. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Ícones -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js" defer></script>
+
+  <!-- JS principal (i18n, canvas, header sticky, etc.) -->
+  <script src="script.js" defer></script>
+
+  <!-- Micro-enhancement: mensagem de sucesso ao retornar do FormSubmit -->
+  <script>
+    (function() {
+      const el = document.getElementById('form-status');
+      if (!el) return;
+      const url = new URL(window.location.href);
+      if (url.searchParams.get('sent') === '1') {
+        el.textContent = 'Mensagem enviada com sucesso! Em breve retorno o contato.';
+      }
+    })();
+  </script>
+
+  <noscript>Ative o JavaScript para ver animações e interações.</noscript>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

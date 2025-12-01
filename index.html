@@ -1,0 +1,409 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title data-l18n="page-title">Vinícius Franco Rocha — Portfólio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfólio de Vinícius Franco Rocha: ITSM, automações, chatbots e dados. Implementações com GLPI, Service Aide, Power Automate, n8n, Botpress, Typebot, Genesys Cloud e Power BI." />
+
+  <!-- SEO / Social -->
+  <link rel="canonical" href="index.html" />
+  <meta property="og:title" content="Vinícius Franco Rocha — Portfólio" />
+  <meta property="og:description" content="ITSM, automações e chatbots com foco em valor e governança. Projetos reais, resultados e visão de produto." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0A0A0B" />
+  <link rel="icon" type="image/png" href="LOGONOVA.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Libs de animação -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="home">
+  <!-- Fundo -->
+  <canvas id="sparkCanvas" aria-hidden="true"></canvas>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="logo">
+      <a href="index.html" aria-label="Página inicial">
+        <img src="VTECH.png" alt="Marca pessoal de Vinícius Franco Rocha" />
+      </a>
+    </div>
+
+    <nav id="mainNav" class="nav-links" aria-label="Menu principal">
+      <a href="#about" class="active" data-page-target="home" data-l18n="nav-about">Sobre</a>
+      <a href="projetos.html" data-page-target="projects" data-l18n="nav-projects">Projetos</a>
+      <a href="contato.html" data-page-target="contact" data-l18n="nav-contact">Contato</a>
+    </nav>
+
+    <div class="header-actions">
+      <button
+        type="button"
+        class="menu-toggle"
+        aria-label="Abrir menu principal"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="language-container">
+        <button id="languageButton" aria-haspopup="true" aria-expanded="false" aria-label="Escolher idioma">
+          <img src="LANGUAGE.svg" alt="Selecionar idioma" loading="lazy" />
+          <span class="language-label">PT</span>
+        </button>
+        <div class="language-dropdown" id="languageDropdown" role="menu">
+          <button type="button" data-lang="pt">PT</button>
+          <button type="button" data-lang="en">EN</button>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section class="hero section" id="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-content" data-aos="fade-up">
+          <div class="hero-badge" data-l18n="hero-badge">ITSM · Automação · Chatbots · Dados</div>
+          <p class="hero-eyebrow" data-l18n="hero-eyebrow">Analista de ITSM · Automação · Conversas</p>
+          <h1 class="hero-title" id="hero-title" data-l18n="hero-title">Vinícius Franco Rocha</h1>
+            <p class="hero-subtitle" data-l18n="hero-subtitle">
+              Analista de ITSM e chatbots que desenha automações estratégicas, integrações e jornadas digitais guiadas por métricas.
+            </p>
+            <p class="hero-description" data-l18n="hero-description">
+              Estruturo processos ponta a ponta: catálogos, SLAs/OLAs, fluxos condicionais e bots em GLPI/Service Aide com Power Automate, n8n e IA conversacional.
+              Minha atuação combina governança, experiência do usuário e dados para garantir operações previsíveis e escaláveis.
+            </p>
+
+          <div class="hero-ctas">
+            <a
+              href="CV - Vinícius Franco Rocha.pdf"
+              class="hero-cta primary"
+              aria-label="Baixar currículo em PDF"
+              download="Vinicius_Franco_Rocha_CV.pdf"
+              target="_blank"
+              rel="noopener"
+              data-l18n="hero-btn-cv"
+            >Baixar CV</a>
+
+            <a href="projetos.html" class="hero-cta ghost" aria-label="Ver projetos" data-l18n="hero-btn-projects">Ver projetos</a>
+
+            <a href="contato.html" class="hero-cta outline" aria-label="Falar comigo" data-l18n="hero-btn-contact">Falar comigo</a>
+          </div>
+
+          <ul class="hero-contact" aria-label="Contato rápido">
+            <li>
+              <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+              <span data-l18n="contact-info-location">Santo André/SP</span>
+            </li>
+            <li>
+              <ion-icon name="call-outline" aria-hidden="true"></ion-icon>
+              <a href="tel:+5511997806037" aria-label="Ligar" data-l18n="contact-info-phone">(11) 99780-6037</a>
+            </li>
+            <li>
+              <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+              <a href="mailto:vinfranrocha@gmail.com" aria-label="Enviar e-mail" data-l18n="contact-info-email">vinfranrocha@gmail.com</a>
+            </li>
+            <li>
+              <ion-icon name="link-outline" aria-hidden="true"></ion-icon>
+              <a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" data-l18n="contact-info-linkedin">LinkedIn</a>
+            </li>
+          </ul>
+
+          <ul class="hero-stats" aria-label="Métricas">
+            <li>
+              <span>2+</span>
+              <p data-l18n="hero-metric-1">anos conectando ITSM, automação e chatbots</p>
+            </li>
+            <li>
+              <span>20+</span>
+              <p data-l18n="hero-metric-2">cursos e certificações em tecnologia</p>
+            </li>
+            <li>
+              <span>12</span>
+              <p data-l18n="hero-metric-3">soluções e integrações entregues</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-media" aria-hidden="true">
+          <div class="hero-media-card" data-aos="fade-left" data-aos-delay="80">
+            <img src="EU.jpg" alt="" loading="lazy" />
+            <div class="hero-media-info">
+              <p data-l18n="hero-media-role">Analista - Tecnocomp</p>
+              <span data-l18n="hero-media-stack">GLPI · Service Aide · Power Automate · n8n</span>
+            </div>
+          </div>
+
+          <div class="hero-media-grid">
+            <div class="hero-panel-card" data-aos="zoom-in" data-aos-delay="60">
+              <p class="panel-title" data-l18n="hero-panel-1-title">Metodologias</p>
+              <p class="panel-stat" data-l18n="hero-panel-1-text">ITIL · Lean · OKRs</p>
+            </div>
+            <div class="hero-panel-card" data-aos="zoom-in" data-aos-delay="120">
+              <p class="panel-title" data-l18n="hero-panel-2-title">Tecnologias</p>
+              <p class="panel-stat" data-l18n="hero-panel-2-text">GLPI · Service Aide · Power BI</p>
+            </div>
+            <div class="hero-panel-card" data-aos="zoom-in" data-aos-delay="180">
+              <p class="panel-title" data-l18n="hero-panel-3-title">Automação</p>
+              <p class="panel-stat" data-l18n="hero-panel-3-text">Power Automate · n8n · APIs</p>
+            </div>
+            <div class="hero-panel-card" data-aos="zoom-in" data-aos-delay="240">
+              <p class="panel-title" data-l18n="hero-panel-4-title">Seguran�a & Resili�ncia</p>
+              <p class="panel-stat" data-l18n="hero-panel-4-text">Playbooks, IAM, observabilidade e postura zero trust para fluxos e bots.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ESPECIALIDADES -->
+    <section id="innovation" class="section" aria-labelledby="innovation-title">
+      <div class="section-header" data-aos="fade-up">
+        <p class="section-eyebrow" data-l18n="innovation-eyebrow">Frentes principais</p>
+        <h2 class="section-title" id="innovation-title" data-l18n="innovation-title">Especialidades que lidero</h2>
+        <p class="section-description" data-l18n="innovation-description">
+          Camadas estratégicas que conectam governança, automações e conversas digitais — sempre com indicadores e handoff claro.
+        </p>
+      </div>
+
+      <div class="innovation-grid">
+        <article class="innovation-card" data-aos="fade-up" data-l18n="innovation-card-1" data-l18n-target="innerHTML">
+          <h3>Arquitetura ITSM</h3>
+          <p>Desenho de catálogos GLPI/Service Aide, SLAs/OLAs, campos condicionais, integrações REST e rituais de governança.</p>
+          <span>Processos • Auditoria • Roadmap</span>
+        </article>
+
+        <article class="innovation-card" data-aos="fade-up" data-aos-delay="120" data-l18n="innovation-card-2" data-l18n-target="innerHTML">
+          <h3>Automações inteligentes</h3>
+          <p>Power Automate e n8n atuando como camada de orquestração — monitoradas, versionadas e documentadas para squads.</p>
+          <span>APIs • Observabilidade • Segurança</span>
+        </article>
+
+        <article class="innovation-card" data-aos="fade-up" data-aos-delay="200" data-l18n="innovation-card-3" data-l18n-target="innerHTML">
+          <h3>Chatbots & voicebots</h3>
+          <p>Experiências com Botpress, Typebot e Genesys Cloud, combinando persona, transbordo contextual e métricas de adoção.</p>
+          <span>Humano-digital • Multicanal • KPIs</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title" id="about-title" data-l18n="about-title">Sobre mim</h2>
+        <p data-l18n="about-description">Executo do diagnóstico ao rollout. Conecto pessoas, dados e plataformas em fluxos medidos e sustentáveis.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text" data-aos="fade-right" data-l18n="about-text" data-l18n-target="innerHTML">
+          <p>Atuo como Analista na Tecnocomp (desde 04/2024), entregando valor em ITSM, automação e chatbots corporativos.</p>
+          <p>Trago experiência prévia em suporte, redes e infraestrutura pela General Motors (01/2023-04/2024).</p>
+          <p>Formação em Análise e Desenvolvimento de Sistemas (Cruzeiro do Sul - conclusão prevista 2025).</p>
+          <ul class="about-list">
+            <li>ITSM: GLPI, Service Aide (básico em Jira Service Management)</li>
+            <li>Automação & Integrações: Power Automate, n8n, Webhooks e APIs</li>
+            <li>Chatbots & IA: Botpress, Typebot, Genesys Cloud</li>
+            <li>Dados: Power BI, SQL (MySQL)</li>
+            <li>Desenvolvimento: HTML/CSS, WordPress</li>
+            <li>Infra: conhecimentos básicos em Linux (Ubuntu)</li>
+          </ul>
+
+          <div class="about-highlights">
+            <article class="highlight-card" data-aos="fade-up" data-aos-delay="50">
+              <h4>Governança prática</h4>
+              <p>Catálogo, SLAs e playbooks alinhados a auditoria e metas.</p>
+            </article>
+            <article class="highlight-card" data-aos="fade-up" data-aos-delay="120">
+              <h4>Automação com rastreabilidade</h4>
+              <p>Logs, alertas e KPIs para evolução contínua do processo.</p>
+            </article>
+            <article class="highlight-card" data-aos="fade-up" data-aos-delay="190">
+              <h4>Conversas com dados</h4>
+              <p>Bots com personalidade, transbordo e coleta de insights.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="skills-card" data-aos="fade-left" data-l18n="about-skills" data-l18n-target="innerHTML">
+          <h3>Perfil técnico</h3>
+          <div class="skills-grid">
+            <div class="skill-item"><h4>ITSM</h4><p>GLPI · Service Aide · Jira (básico)</p></div>
+            <div class="skill-item"><h4>Automação</h4><p>Power Automate · n8n · APIs</p></div>
+            <div class="skill-item"><h4>Chatbots</h4><p>Botpress · Typebot · Genesys</p></div>
+            <div class="skill-item"><h4>Dados</h4><p>Power BI · SQL/MySQL</p></div>
+            <div class="skill-item"><h4>Dev</h4><p>HTML/CSS · WordPress</p></div>
+            <div class="skill-item"><h4>Infra</h4><p>Linux (Ubuntu - básico)</p></div>
+          </div>
+          <p class="skill-note">Foco em valor mensurável com governança e experiência do usuário.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- EXPERIÊNCIA (TIMELINE) -->
+    <section id="experience" class="section experience" aria-labelledby="exp-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title" id="exp-title" data-l18n="experience-title">Experiência</h2>
+        <p data-l18n="experience-description">Atuação em operações críticas com entregas reais.</p>
+      </div>
+
+      <ol class="timeline" aria-label="Linha do tempo profissional">
+        <li class="timeline-item" data-aos="fade-up">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <article class="timeline-card" data-l18n="experience-item-1" data-l18n-target="innerHTML">
+            <span class="experience-year-wrap">
+              <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+              <span class="experience-year">04/2024 - Atual</span>
+            </span>
+            <h3 class="experience-company">Tecnocomp Tecnologia e Serviços</h3>
+            <p class="experience-title">Analista</p>
+            <p class="experience-desc">
+              Implementação de ITSM (GLPI/Service Aide), automações com Power Automate e n8n,
+              bots corporativos (Botpress/Typebot/Genesys Cloud) e dashboards em Power BI.
+            </p>
+            <button type="button" class="details-btn" onclick="openModal('exp1-modal')" data-l18n="experience-btn-more">Ver mais</button>
+          </article>
+        </li>
+
+        <li class="timeline-item" data-aos="fade-up" data-aos-delay="120">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <article class="timeline-card" data-l18n="experience-item-2" data-l18n-target="innerHTML">
+            <span class="experience-year-wrap">
+              <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+              <span class="experience-year">01/2023 - 04/2024</span>
+            </span>
+            <h3 class="experience-company">General Motors do Brasil</h3>
+            <p class="experience-title">Aprendiz Técnico em Mecatrônica (TI)</p>
+            <p class="experience-desc">
+              Suporte técnico, atualização de equipamentos, redes (endereçamento/máscaras) e continuidade operacional na produção.
+            </p>
+            <button type="button" class="details-btn" onclick="openModal('exp2-modal')" data-l18n="experience-btn-more">Ver mais</button>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <!-- EDUCAÇÃO -->
+    <section id="education" class="section education" aria-labelledby="edu-title">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title" id="edu-title" data-l18n="education-title">Educação</h2>
+        <p data-l18n="education-description">Formação formal e fundamentos que sustentam a prática.</p>
+      </div>
+
+      <div class="education-grid">
+        <article class="education-card" data-aos="fade-up" data-l18n="education-item-1" data-l18n-target="innerHTML">
+          <h3 class="education-title">Análise e Desenvolvimento de Sistemas</h3>
+          <h4 class="education-subtitle">Universidade Cruzeiro do Sul</h4>
+          <div class="edu-meta">
+            <span class="meta"><ion-icon name="calendar-outline"></ion-icon> 2024 – 2025</span>
+            <span class="edu-badge">Em andamento</span>
+          </div>
+          <p class="edu-desc">Engenharia de software · Banco de dados · Desenvolvimento web.</p>
+        </article>
+
+        <article class="education-card" data-aos="fade-up" data-aos-delay="120" data-l18n="education-item-2" data-l18n-target="innerHTML">
+          <h3 class="education-title">Ensino Médio</h3>
+          <h4 class="education-subtitle">Professor José Carlos Antunes</h4>
+          <div class="edu-meta">
+            <span class="meta"><ion-icon name="calendar-outline"></ion-icon> Concluído em 2023</span>
+            <span class="edu-badge">Concluído</span>
+          </div>
+          <p class="edu-desc">Ênfase em tecnologia, laboratórios de informática e projetos práticos.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modais de experiência -->
+  <div class="exp-modal" id="exp1-modal" role="dialog" aria-modal="true" aria-labelledby="exp1-title">
+    <div class="modal-content" role="document" data-l18n="experience-modal-1" data-l18n-target="innerHTML">
+      <button class="close" data-close-modal onclick="closeModal('exp1-modal')" aria-label="Fechar">&times;</button>
+      <h3 class="modal-title" id="exp1-title">Tecnocomp — Detalhamento</h3>
+      <p>
+        Implementações e sustentação de ITSM (GLPI/Service Aide), automações (Power Automate, n8n),
+        chatbots (Genesys Cloud, Botpress, Typebot) e dashboards (Power BI), com foco em governança e valor.
+      </p>
+      <ul class="modal-topic-list">
+        <li>ITSM: catálogo, SLAs/OLAs, filas, campos e regras;</li>
+        <li>Automações: orquestrações, observabilidade e alertas;</li>
+        <li>Chatbots: multicanal, transbordo e métricas;</li>
+        <li>Dados: KPIs e relatórios executivos recorrentes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-modal" id="exp2-modal" role="dialog" aria-modal="true" aria-labelledby="exp2-title">
+    <div class="modal-content" role="document" data-l18n="experience-modal-2" data-l18n-target="innerHTML">
+      <button class="close" data-close-modal onclick="closeModal('exp2-modal')" aria-label="Fechar">&times;</button>
+      <h3 class="modal-title" id="exp2-title">General Motors — Detalhamento</h3>
+      <p>
+        Suporte técnico em TI, atualização de drivers e manutenção de equipamentos; configuração de redes (endereços IP e máscaras);
+        apoio à continuidade operacional em linha de produção.
+      </p>
+      <ul class="modal-topic-list">
+        <li>Atualizações e manutenção (desktops, notebooks, impressoras);</li>
+        <li>Configurações de rede e diagnóstico;</li>
+        <li>Organização e documentação de procedimentos.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-logo" data-l18n="footer-logo">Vinícius Franco Rocha</div>
+      <div class="footer-social">
+        <a href="https://github.com/seuPerfil" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="GITHUB.svg" alt="GitHub" loading="lazy" />
+        </a>
+        <a href="mailto:vinfranrocha@gmail.com" aria-label="E-mail">
+          <img src="GMAIL.svg" alt="Gmail" loading="lazy" />
+        </a>
+        <a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <img src="LINKEDIN.svg" alt="LinkedIn" loading="lazy" />
+        </a>
+      </div>
+      <p data-l18n="footer-rights">© 2025 Vinícius Franco Rocha. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Ícones -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+
+  <!-- Animações -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js" defer></script>
+
+  <!-- Script principal -->
+  <script src="script.js" defer></script>
+
+  <noscript>Ative o JavaScript para ver animações e interações.</noscript>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
