@@ -600,7 +600,8 @@ main > .section:first-of-type {
   width: 100%;
   max-width: 100%;
   height: auto;
-  max-height: 320px;
+  max-height: min(70vh, 420px);
+  object-position: 50% 18%;
   border-radius: calc(var(--radius) - 6px);
   object-fit: cover;
   margin-bottom: 0.75rem;
@@ -1168,7 +1169,7 @@ footer {
 @media (max-width: 1024px) {
   header { padding-inline: 24px; }
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-media-card img { max-height: 280px; }
+  .hero-media-card img { max-height: min(65vh, 360px); }
   .about-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 900px) {
@@ -1204,7 +1205,10 @@ footer {
 }
 @media (max-width: 768px) {
   main { padding-top: calc(var(--header-height) + 40px); }
-  .hero-media-card img { max-height: 240px; }
+  .hero-media-card img {
+    max-height: none;
+    aspect-ratio: 4 / 5;
+  }
   .hero-stats { flex-direction: column; }
 }
 @media (max-width: 540px) {
