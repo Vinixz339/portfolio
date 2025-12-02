@@ -118,7 +118,7 @@
     <div class="footer-content">
       <div class="footer-logo">Vinícius Franco Rocha</div>
       <div class="footer-social">
-        <a href="https://github.com/seuPerfil" target="_blank" rel="noopener" aria-label="GitHub">
+        <a href="https://github.com/Vinixz339" target="_blank" rel="noopener" aria-label="GitHub">
           <img src="GITHUB.svg" alt="GitHub" loading="lazy" />
         </a>
         <a href="mailto:vinfranrocha@gmail.com" aria-label="E-mail">
@@ -157,4 +157,5 @@
   <noscript>Ative o JavaScript para ver animações e interações.</noscript>
 </body>
 </html>
+
 
