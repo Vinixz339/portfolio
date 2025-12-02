@@ -930,11 +930,71 @@ const initFormStatus = () => {
   const statusEl = document.getElementById('form-status');
   if (!statusEl) return;
   const url = new URL(window.location.href);
+  statusEl.classList.remove('status-info', 'status-success', 'status-error');
   if (url.searchParams.get('sent') === '1') {
     statusEl.textContent = 'Mensagem enviada com sucesso! Em breve retorno o contato.';
+    statusEl.classList.add('status-success');
   } else {
     statusEl.textContent = '';
   }
+};
+
+const initContactFormHandler = () => {
+  const form = document.querySelector('form.contact-form');
+  if (!form) return;
+
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const defaultBtnText = submitBtn?.textContent?.trim() || 'Enviar';
+  const nextInput = document.getElementById('form-next');
+
+  if (nextInput) {
+    const nextUrl = new URL('contato.html?sent=1', window.location.href).href;
+    nextInput.value = nextUrl;
+  }
+
+  const setStatus = (message, type = 'info') => {
+    if (!statusEl) return;
+    statusEl.textContent = message || '';
+    statusEl.classList.remove('status-info', 'status-success', 'status-error');
+    if (type) statusEl.classList.add(`status-${type}`);
+  };
+
+  const setLoading = (isLoading) => {
+    form.classList.toggle('is-loading', isLoading);
+    if (!submitBtn) return;
+    submitBtn.disabled = isLoading;
+    submitBtn.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+    submitBtn.textContent = isLoading ? 'Enviando...' : defaultBtnText;
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+
+    setLoading(true);
+    setStatus('Enviando...', 'info');
+
+    try {
+      const formData = new FormData(form);
+      const rawAction = form.getAttribute('action') || form.action;
+      const actionUrl = rawAction.includes('/ajax/') ? rawAction : rawAction.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+      const response = await fetch(actionUrl || rawAction, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error('request_failed');
+
+      setStatus('Mensagem enviada com sucesso! Em breve retorno o contato.', 'success');
+      form.reset();
+    } catch (error) {
+      setStatus('Não foi possível enviar agora. Tente novamente ou envie para vinfranrocha@gmail.com.', 'error');
+    } finally {
+      setLoading(false);
+    }
+  });
 };
 
 /* ========================================================================
@@ -1044,6 +1104,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Form feedback (contato.html)
   initFormStatus();
+  initContactFormHandler();
 
   // Modais de experiência
   initExperienceModals();

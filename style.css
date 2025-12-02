@@ -154,6 +154,11 @@ body::after {
   z-index: -2;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* SeleÃ§Ã£o */
 ::selection {
   background: var(--accent);
@@ -1020,6 +1025,35 @@ main > .section:first-of-type {
 .contact-form input::placeholder,
 .contact-form textarea::placeholder { color: #9a9a9a; }
 
+.contact-form button[type="submit"] {
+  position: relative;
+}
+
+.contact-form.is-loading button[type="submit"] {
+  cursor: progress;
+  opacity: 0.9;
+}
+
+.contact-form.is-loading button[type="submit"]::after {
+  content: '';
+  position: absolute;
+  right: 1.1rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: rgba(0, 0, 0, 0.65);
+  animation: spin 0.8s linear infinite;
+}
+
+#form-status {
+  font-weight: 600;
+}
+
+#form-status.status-info { color: var(--accent-3); }
+#form-status.status-success { color: #9de19d; }
+#form-status.status-error { color: #ff9b9b; }
+
 /* Focus */
 .contact-form input:focus-visible,
 .contact-form textarea:focus-visible {
@@ -1244,6 +1278,7 @@ footer {
   100% { opacity: 0.5; transform: scale(0.96); }
 }
 @keyframes gridScroll { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+@keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 
 /* =========================
    19) PreferÃªncias do usuÃ¡rio

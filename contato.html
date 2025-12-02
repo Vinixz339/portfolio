@@ -128,12 +128,12 @@
             method="POST"
             class="contact-form"
             autocomplete="on"
-            novalidate
+            accept-charset="UTF-8"
           >
             <input type="hidden" name="_subject" value="Contato via portfólio" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" value="contato.html?sent=1" />
+            <input type="hidden" name="_next" id="form-next" value="contato.html?sent=1" />
             <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" />
 
             <div class="form-group">
@@ -143,7 +143,7 @@
 
             <div class="form-group">
               <label for="email"><span data-l18n="contact-form-email-label">E-mail</span></label>
-              <input id="email" type="email" name="email" required maxlength 80 autocomplete="email" inputmode="email" data-l18n="contact-form-email-placeholder" data-l18n-target="placeholder" placeholder="seu@email.com" />
+              <input id="email" type="email" name="email" required maxlength="80" autocomplete="email" inputmode="email" data-l18n="contact-form-email-placeholder" data-l18n-target="placeholder" placeholder="seu@email.com" />
             </div>
 
             <div class="form-group">
