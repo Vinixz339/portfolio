@@ -1093,6 +1093,7 @@ textarea:-webkit-autofill {
   padding: 1.5rem;
   z-index: 40;
   animation: fadeOverlay .3s ease forwards;
+  overscroll-behavior: contain;
 }
 .exp-modal.show { display: flex; }
 

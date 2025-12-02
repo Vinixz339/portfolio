@@ -1003,7 +1003,22 @@ const initContactFormHandler = () => {
 const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 let lastFocusedElement = null;
 
+let scrollLockPosition = 0;
+
 const setBodyModalState = (isOpen) => {
+  if (isOpen) {
+    scrollLockPosition = window.scrollY || document.documentElement.scrollTop;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollLockPosition}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+  } else {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    window.scrollTo(0, scrollLockPosition);
+  }
   document.body.classList.toggle('modal-open', isOpen);
 };
 
