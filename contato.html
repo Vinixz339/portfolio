@@ -1,221 +1,193 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title data-l18n="page-title-contact">Contato — Vinícius Franco Rocha</title>
+  <title data-i18n="page-title-contact">Contato — Vinícius Franco Rocha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Fale com Vinícius Franco Rocha sobre ITSM, automações e chatbots. Respondo com plano objetivo e próximos passos." />
+  <meta name="description" content="Fale com Vinícius Franco Rocha sobre ITSM, automação de processos e chatbots com IA." />
 
   <!-- SEO / Social -->
   <link rel="canonical" href="contato.html" />
   <meta property="og:title" content="Contato — Vinícius Franco Rocha" />
-  <meta property="og:description" content="Entre em contato para falar sobre ITSM, automações e chatbots com governança e métricas." />
+  <meta property="og:description" content="Entre em contato para falar sobre ITSM, automação de processos e chatbots com IA." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0A0A0B" />
-  <link rel="icon" type="image/png" href="assets/logo/LOGONOVA.png" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 
-  <!-- Lib de animações -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" />
-
-  <!-- CSS principal -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Motion: habilita animações só se o usuário não pediu movimento reduzido.
+       Fallback: se o JS principal não carregar, remove a classe e mostra tudo. -->
+  <script>
+    (function (d) {
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+      d.documentElement.classList.add("motion");
+      setTimeout(function () { if (!window.__vfrReady) d.documentElement.classList.remove("motion"); }, 2500);
+    })(document);
+  </script>
 </head>
 <body data-page="contact">
-  <!-- Fundo -->
-  <canvas id="sparkCanvas" aria-hidden="true"></canvas>
 
   <!-- Header -->
-  <header role="banner">
-    <div class="logo">
-      <a href="index.html" aria-label="Página inicial">
-        <img src="assets/images/VTECH.png" alt="Marca pessoal de Vinícius Franco Rocha" />
+  <a class="skip-link" href="#main-content" data-i18n="skip-link">Pular para o conteúdo</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="wordmark" href="index.html" aria-label="Página inicial" data-i18n-attr="aria-label:header-home-aria">
+        <span class="wordmark-mono" aria-hidden="true">VFR</span>
+        <span class="wordmark-name">Vinícius Franco Rocha</span>
       </a>
-    </div>
 
-    <nav id="mainNav" class="nav-links" aria-label="Menu principal">
-      <a href="index.html#about" data-page-target="home" data-l18n="nav-about">Sobre</a>
-      <a href="projetos.html" data-page-target="projects" data-l18n="nav-projects">Projetos</a>
-      <a href="contato.html" class="active" data-page-target="contact" data-l18n="nav-contact">Contato</a>
-    </nav>
+      <nav id="mainNav" class="site-nav" aria-label="Menu principal" data-i18n-attr="aria-label:nav-aria">
+        <a href="index.html#about" data-i18n="nav-about">Sobre</a>
+        <a href="projetos.html" data-i18n="nav-projects">Projetos</a>
+        <a href="contato.html" aria-current="page" data-i18n="nav-contact">Contato</a>
+      </nav>
 
-    <div class="header-actions">
-      <button
-        type="button"
-        class="menu-toggle"
-        aria-label="Abrir menu principal"
-        aria-controls="mainNav"
-        aria-expanded="false"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <div class="language-container">
-        <button id="languageButton" aria-haspopup="true" aria-expanded="false" aria-label="Escolher idioma">
-          <img src="assets/icons/LANGUAGE.svg" alt="Selecionar idioma" loading="lazy" />
-          <span class="language-label">PT</span>
-        </button>
-        <div class="language-dropdown" id="languageDropdown" role="menu">
-          <button type="button" data-lang="pt">PT</button>
-          <button type="button" data-lang="en">EN</button>
-          
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:language-aria">
+          <button type="button" data-lang="pt" aria-pressed="true" aria-label="Português">PT</button>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
         </div>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          aria-label="Abrir menu principal"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          data-i18n-attr="aria-label:menu-aria"
+        >
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Main -->
-  <main id="main-content" role="main">
-    <section class="section" aria-labelledby="contact-title">
-      <div class="section-header" data-aos="fade-up">
-        <p class="section-eyebrow" data-l18n="contact-eyebrow">Contato</p>
-        <h1 class="section-title" id="contact-title" data-l18n="contact-hero-title">Vamos conversar</h1>
-        <p class="section-description" data-l18n="contact-hero-description">
-          Compartilhe rapidamente o contexto da sua operação. Eu retorno com próximos passos objetivos.
-        </p>
-      </div>
-
-      <div class="contact-single-card" data-aos="fade-up">
-        <div class="contact-info-inline">
-          <h3 data-l18n="contact-info-title">Informações diretas</h3>
-          <ul class="contact-info-list">
-            <li class="contact-info-item">
-              <span class="contact-icon"><ion-icon name="location-outline" aria-hidden="true"></ion-icon></span>
-              <div class="contact-info-text">
-                <span class="contact-info-label">Local</span>
-                <span class="contact-info-value" data-l18n="contact-info-location">Santo André · SP</span>
-              </div>
-            </li>
-            <li class="contact-info-item">
-              <span class="contact-icon"><ion-icon name="mail-outline" aria-hidden="true"></ionicon></span>
-              <div class="contact-info-text">
-                <span class="contact-info-label">E-mail</span>
-                <a class="contact-info-value" href="mailto:vinfranrocha@gmail.com" data-l18n="contact-info-email">vinfranrocha@gmail.com</a>
-              </div>
-            </li>
-            <li class="contact-info-item">
-              <span class="contact-icon"><ion-icon name="call-outline" aria-hidden="true"></ionicon></span>
-              <div class="contact-info-text">
-                <span class="contact-info-label">Telefone</span>
-                <a class="contact-info-value" href="tel:+5511997806037" data-l18n="contact-info-phone">(11) 99780-6037</a>
-              </div>
-            </li>
-            <li class="contact-info-item">
-              <span class="contact-icon"><ion-icon name="logo-linkedin" aria-hidden="true"></ionicon></span>
-              <div class="contact-info-text">
-                <span class="contact-info-label">LinkedIn</span>
-                <a class="contact-info-value" href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" data-l18n="contact-info-linkedin">LinkedIn</a>
-              </div>
-            </li>
-          </ul>
-          <div class="contact-actions">
-            <a class="contact-cta primary" href="mailto:vinfranrocha@gmail.com" data-l18n="contact-cta-email">Enviar e-mail</a>
-          </div>
-        </div>
-
-        <div class="contact-form-wrapper">
-          <h3 data-l18n="contact-form-title">Formulário</h3>
-          <div id="form-status" class="muted" aria-live="polite" style="min-height:1.25rem;"></div>
-
-          <form
-            action="https://formsubmit.co/vinfranrocha@gmail.com"
-            method="POST"
-            class="contact-form"
-            autocomplete="on"
-            accept-charset="UTF-8"
-          >
-            <input type="hidden" name="_subject" value="Contato via portfólio" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" id="form-next" value="contato.html?sent=1" />
-            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" />
-
-            <div class="form-group">
-              <label for="name"><span data-l18n="contact-form-name-label">Nome</span></label>
-              <input id="name" type="text" name="name" required minlength="2" maxlength="60" autocomplete="name" data-l18n="contact-form-name-placeholder" data-l18n-target="placeholder" placeholder="Seu nome completo" />
-            </div>
-
-            <div class="form-group">
-              <label for="email"><span data-l18n="contact-form-email-label">E-mail</span></label>
-              <input id="email" type="email" name="email" required maxlength="80" autocomplete="email" inputmode="email" data-l18n="contact-form-email-placeholder" data-l18n-target="placeholder" placeholder="seu@email.com" />
-            </div>
-
-            <div class="form-group">
-              <label for="phone"><span data-l18n="contact-form-phone-label">Telefone (opcional)</span></label>
-              <input id="phone" type="tel" name="phone" maxlength="20" autocomplete="tel" inputmode="tel" data-l18n="contact-form-phone-placeholder" data-l18n-target="placeholder" placeholder="(11) 99999-9999" />
-            </div>
-
-            <div class="form-group">
-              <label for="message"><span data-l18n="contact-form-message-label">Mensagem</span></label>
-              <textarea id="message" name="message" rows="6" required maxlength="1200" data-l18n="contact-form-message-placeholder" data-l18n-target="placeholder" placeholder="Explique brevemente o contexto e o objetivo."></textarea>
-            </div>
-
-            <button type="submit" class="hero-cta primary" data-l18n="contact-form-submit" aria-label="Enviar mensagem">
-              Enviar
-            </button>
-          </form>
+  <main id="main-content" tabindex="-1">
+    <section class="block block--intro" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="page-head" data-reveal>
+          <p class="label" data-i18n="contact-eyebrow">Contato</p>
+          <h1 class="page-title" id="contact-title" data-i18n="contact-title">Vamos conversar</h1>
+          <p class="block-lead" data-i18n="contact-lead">
+            Compartilhe rapidamente o contexto da sua operação. Eu retorno com próximos passos objetivos.
+          </p>
         </div>
       </div>
     </section>
 
+    <section class="block block--paper" aria-label="Canais de contato" data-i18n-attr="aria-label:contact-section-aria">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info" data-reveal>
+            <h2 class="label" data-i18n="contact-info-title">Informações diretas</h2>
+            <dl class="rule-list contact-list">
+              <div>
+                <dt data-i18n="contact-label-email">E-mail</dt>
+                <dd><a href="mailto:vinfranrocha@gmail.com">vinfranrocha@gmail.com</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="contact-label-phone">Telefone</dt>
+                <dd><a href="tel:+5511997806037">(11) 99780-6037</a></dd>
+              </div>
+              <div>
+                <dt>LinkedIn</dt>
+                <dd><a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener">linkedin.com/in/vinícius-franco-rocha</a></dd>
+              </div>
+              <div>
+                <dt data-i18n="contact-label-location">Local</dt>
+                <dd data-i18n="contact-location">Santo André, São Paulo, Brasil</dd>
+              </div>
+            </dl>
+            <a class="btn btn--secondary" href="assets/docs/CV - Vinícius Franco Rocha.pdf" download="Vinicius_Franco_Rocha_CV.pdf">
+              <span data-i18n="hero-btn-cv">Baixar CV</span>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9m0 0 3.5-3.5M8 11 4.5 7.5M3 14h10" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+          </div>
+
+          <div class="contact-form-wrap" data-reveal style="--reveal-delay: 120ms">
+            <h2 class="label" data-i18n="contact-form-title">Formulário</h2>
+
+            <form
+              action="https://formsubmit.co/vinfranrocha@gmail.com"
+              method="POST"
+              class="contact-form"
+              autocomplete="on"
+              accept-charset="UTF-8"
+            >
+              <input type="hidden" name="_subject" value="Contato via portfólio" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" id="form-next" value="contato.html?sent=1" />
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+              <div class="form-field">
+                <label for="name" data-i18n="form-name-label">Nome</label>
+                <input id="name" type="text" name="name" required minlength="2" maxlength="60" autocomplete="name" placeholder="Seu nome completo" data-i18n-attr="placeholder:form-name-placeholder" />
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="email" data-i18n="form-email-label">E-mail</label>
+                  <input id="email" type="email" name="email" required maxlength="80" autocomplete="email" inputmode="email" placeholder="seu@email.com" data-i18n-attr="placeholder:form-email-placeholder" />
+                </div>
+
+                <div class="form-field">
+                  <label for="phone" data-i18n="form-phone-label">Telefone (opcional)</label>
+                  <input id="phone" type="tel" name="phone" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="(11) 99999-9999" />
+                </div>
+              </div>
+
+              <div class="form-field">
+                <label for="message" data-i18n="form-message-label">Mensagem</label>
+                <textarea id="message" name="message" rows="6" required maxlength="1200" placeholder="Explique brevemente o contexto e o objetivo." data-i18n-attr="placeholder:form-message-placeholder"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn--primary" data-i18n="form-submit">Enviar mensagem</button>
+                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="footer-content">
-      <div class="footer-logo" data-l18n="footer-logo">Vinícius Franco Rocha</div>
-      <div class="footer-social">
-        <a href="https://github.com/Vinixz339" target="_blank" rel="noopener" aria-label="GitHub">
-          <img src="assets/icons/GITHUB.svg" alt="GitHub" loading="lazy" />
+  <footer class="site-footer" role="contentinfo" data-cursor="light">
+    <div class="container">
+      <div class="footer-top">
+        <a class="wordmark wordmark--inverse" href="index.html" aria-label="Página inicial" data-i18n-attr="aria-label:header-home-aria">
+          <span class="wordmark-mono" aria-hidden="true">VFR</span>
+          <span class="wordmark-name">Vinícius Franco Rocha</span>
         </a>
-        <a href="mailto:vinfranrocha@gmail.com" aria-label="E-mail">
-          <img src="assets/icons/GMAIL.svg" alt="Gmail" loading="lazy" />
-        </a>
-        <a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <img src="assets/icons/LINKEDIN.svg" alt="LinkedIn" loading="lazy" />
-        </a>
+
+        <ul class="footer-links" aria-label="Redes e contato" data-i18n-attr="aria-label:footer-social-aria">
+          <li><a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/Vinixz339" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="mailto:vinfranrocha@gmail.com" data-i18n="footer-email">E-mail</a></li>
+        </ul>
       </div>
-      <p data-l18n="footer-rights">© 2025 Vinícius Franco Rocha. Todos os direitos reservados.</p>
+
+      <div class="footer-bottom">
+        <p data-i18n="footer-rights">© 2026 Vinícius Franco Rocha. Todos os direitos reservados.</p>
+        <p>Santo André/SP</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Ícones -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" defer></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
-
-  <!-- AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js" defer></script>
-
-  <!-- JS principal (i18n, canvas, header sticky, etc.) -->
+  <!-- JS principal (i18n, menu, motion, formulário) -->
   <script src="js/script.js" defer></script>
-
-  <!-- Micro-enhancement: mensagem de sucesso ao retornar do FormSubmit -->
-  <script>
-    (function() {
-      const el = document.getElementById('form-status');
-      if (!el) return;
-      const url = new URL(window.location.href);
-      if (url.searchParams.get('sent') === '1') {
-        el.textContent = 'Mensagem enviada com sucesso! Em breve retorno o contato.';
-      }
-    })();
-  </script>
-
-  <noscript>Ative o JavaScript para ver animações e interações.</noscript>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
