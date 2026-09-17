@@ -1537,10 +1537,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initNetwork();
 
-  // Contagem de "Ambientes atendidos" sempre igual ao número de nomes na lista
+  // Contagens de clientes (métrica e "Ambientes atendidos") sempre iguais ao número de nomes na lista
   document.querySelectorAll('[data-client-count]').forEach((el) => {
-    const list = el.closest('.client-strip')?.querySelector('.client-list');
-    if (list) el.textContent = String(list.children.length);
+    const list = document.querySelector('.client-list');
+    if (!list) return;
+    el.textContent = String(list.children.length);
+    if (el.hasAttribute('data-count')) el.dataset.count = String(list.children.length);
   });
 
   initProjectFilter();
