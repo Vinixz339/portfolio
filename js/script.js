@@ -1045,8 +1045,22 @@ const initCursor = () => {
    (movimento por tempo real, rastro que se apaga aos poucos, nós acendendo de leve
    quando a energia passa) e a rede acompanha levemente o cursor.
    Um <canvas> por seção; um único loop que só desenha seções visíveis e pausa com a
-   aba oculta. Com "reduzir movimento": circuito parado, sem pulsos nem parallax. */
+   aba oculta. Com "reduzir movimento": circuito parado, sem pulsos nem parallax.
+   No celular (até 760px) o circuito não é criado: nada de canvas nem loop. */
+const mobileNetworkQuery = window.matchMedia('(max-width: 760px)');
+
 const initNetwork = () => {
+  // Celular: só inicializa se a tela passar a ser larga (ex.: girar o tablet)
+  if (mobileNetworkQuery.matches) {
+    const onChange = (event) => {
+      if (event.matches) return;
+      mobileNetworkQuery.removeEventListener('change', onChange);
+      initNetwork();
+    };
+    mobileNetworkQuery.addEventListener('change', onChange);
+    return;
+  }
+
   // Fundos brancos: hero, intro das páginas internas e seções .block sem variação de cor
   const sections = Array.from(document.querySelectorAll('.hero, .block'))
     .filter((s) => !s.classList.contains('block--paper') && !s.classList.contains('feature-band'));
@@ -1265,6 +1279,7 @@ const initNetwork = () => {
         const field = fields.find((f) => f.section === entry.target);
         if (!field) return;
         const rect = entry.target.getBoundingClientRect();
+        if (mobileNetworkQuery.matches) return;
         if (Math.abs(Math.round(rect.width) - field.w) > 2 || Math.abs(Math.round(rect.height) - field.h) > 2) {
           build(field);
           draw(field, 0);
@@ -1287,6 +1302,8 @@ const initNetwork = () => {
   let raf = null;
   let last = 0;
   const loop = (now) => {
+    // Janela estreitou para largura de celular: para o loop (o canvas some pelo CSS)
+    if (mobileNetworkQuery.matches) { raf = null; return; }
     // dt em segundos, limitado para não "pular" depois de a aba voltar
     const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;
     last = now;
@@ -1302,10 +1319,17 @@ const initNetwork = () => {
     if (document.hidden) {
       cancelAnimationFrame(raf);
       raf = null;
-    } else if (!raf) {
+    } else if (!raf && !mobileNetworkQuery.matches) {
       last = 0;
       raf = requestAnimationFrame(loop);
     }
+  });
+
+  mobileNetworkQuery.addEventListener('change', (event) => {
+    if (event.matches || raf || document.hidden || !motionEnabled()) return;
+    fields.forEach((field) => { build(field); draw(field, 0); });
+    last = 0;
+    raf = requestAnimationFrame(loop);
   });
 
   reducedMotionQuery.addEventListener?.('change', (event) => {

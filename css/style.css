@@ -2637,6 +2637,13 @@ a.channel-value {
   pointer-events: none;
 }
 
+/* Celular: sem circuitos (o JS nem cria o canvas; isto cobre a janela que estreita depois) */
+@media (max-width: 760px) {
+  .network-canvas {
+    display: none;
+  }
+}
+
 /* =========================
    20) Rodada 3 — Hover consistente em elementos clicáveis
    Mesmo vocabulário em todo o site: cor/borda em petróleo, 1px de subida em
