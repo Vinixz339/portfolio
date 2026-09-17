@@ -7,33 +7,125 @@
   <meta name="description" content="Projetos de Vinícius Franco Rocha em ITSM (GLPI, Serviceaide ISM), automação de processos com n8n e Microsoft Graph, e chatbots com IA (Genesys Cloud, RAG)." />
 
   <!-- SEO / Social -->
-  <link rel="canonical" href="projetos.html" />
+  <link rel="canonical" href="https://portfolio-five-xi-37.vercel.app/projetos.html" />
+  <meta property="og:url" content="https://portfolio-five-xi-37.vercel.app/projetos.html" />
   <meta property="og:title" content="Projetos — Vinícius Franco Rocha" />
   <meta property="og:description" content="Casos reais em ITSM, automação de processos e chatbots com IA, entregues em modelo de consultoria e serviços gerenciados." />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vinícius Franco Rocha" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:locale:alternate" content="en_US" />
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css?v=2026-09-17-4" />
 
   <!-- Motion: habilita animações só se o usuário não pediu movimento reduzido.
        Fallback: se o JS principal não carregar, remove a classe e mostra tudo. -->
   <script>
     (function (d) {
+      // Tela de carregamento: só com JS (sem JS o conteúdo aparece direto)
+      d.documentElement.classList.add("is-loading");
       var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) return;
       d.documentElement.classList.add("motion");
-      setTimeout(function () { if (!window.__vfrReady) d.documentElement.classList.remove("motion"); }, 2500);
+      // Cursor customizado: esconde a seta do sistema desde a primeira pintura (só com mouse)
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) d.documentElement.classList.add("has-custom-cursor");
+      setTimeout(function () {
+        if (window.__vfrReady) return;
+        // JS principal não carregou: devolve tudo ao normal (sem animação, seta do sistema de volta)
+        d.documentElement.classList.remove("motion", "has-custom-cursor");
+      }, 2500);
     })(document);
   </script>
 </head>
 <body data-page="projects">
+
+  <!-- Tela de carregamento: progresso real (estrutura da página, imagens, fontes, load).
+       Sem JS a classe is-loading nunca é aplicada e a tela não aparece. -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-mark">VFR</span>
+      <div class="loader-bar"><span class="loader-bar-fill"></span></div>
+      <span class="loader-pct" data-loader-pct>0%</span>
+    </div>
+  </div>
+  <script>
+    (function (d, w) {
+      var root = d.documentElement;
+      if (!root.classList.contains('is-loading')) return;
+      var loader = d.querySelector('.loader');
+      var fill = loader.querySelector('.loader-bar-fill');
+      var pct = loader.querySelector('[data-loader-pct]');
+      var reduce = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var total = 0, done = 0, target = 0, shown = 0, finished = false, hidden = false;
+      // Primeira página da sessão: a contagem 0→100% dura ~3 s (mesmo que carregue antes).
+      // Nas trocas de página seguintes, reflete só o carregamento real (rápido).
+      var MIN_MS = 0;
+      try { if (!sessionStorage.getItem('vfr_loader_seen')) { MIN_MS = 3000; sessionStorage.setItem('vfr_loader_seen', '1'); } } catch (e) { MIN_MS = 3000; }
+      if (reduce) MIN_MS = 0;
+      var t0 = (w.performance && performance.now) ? performance.now() : Date.now();
+      function elapsed() { return ((w.performance && performance.now) ? performance.now() : Date.now()) - t0; }
+
+      function add() { total++; }
+      function complete() { done++; target = Math.max(target, Math.floor((done / total) * 100)); }
+      function paint(v) { fill.style.transform = 'scaleX(' + (v / 100) + ')'; pct.textContent = Math.round(v) + '%'; }
+
+      function hide() {
+        if (hidden) return;
+        hidden = true;
+        paint(100);
+        root.classList.remove('is-loading');
+        loader.classList.add('is-done');
+        w.__vfrLoaded = true;
+        d.dispatchEvent(new Event('vfr:loaded'));
+        setTimeout(function () { if (loader.parentNode) loader.parentNode.removeChild(loader); }, 450);
+      }
+
+      function tick() {
+        if (hidden) return;
+        // Teto do número: o que já carregou de verdade e, no início da sessão, o tempo (0→100% em ~3 s)
+        var cap = MIN_MS > 0 ? Math.min(target, (elapsed() / MIN_MS) * 100) : target;
+        shown = reduce ? cap : shown + (cap - shown) * 0.3;
+        if (cap - shown < 0.5) shown = cap;
+        paint(shown);
+        if (finished && shown >= 100 && elapsed() >= MIN_MS) { hide(); return; }
+        w.requestAnimationFrame(tick);
+      }
+
+      function finish() { finished = true; target = 100; }
+
+      // Tarefas medidas
+      add(); // estrutura da página (DOMContentLoaded)
+      add(); // carregamento completo (window load)
+      d.addEventListener('DOMContentLoaded', function () {
+        var imgs = d.images;
+        for (var i = 0; i < imgs.length; i++) {
+          (function (img) {
+            add();
+            if (img.complete) complete();
+            else { img.addEventListener('load', complete); img.addEventListener('error', complete); }
+          })(imgs[i]);
+        }
+        if (d.fonts && d.fonts.ready) { add(); d.fonts.ready.then(complete, complete); }
+        complete();
+      });
+      w.addEventListener('load', function () { complete(); finish(); });
+
+      // Segurança: nunca prende a página (rede lenta, recurso travado)
+      setTimeout(finish, Math.max(5000, MIN_MS + 2000));
+      // Volta pelo histórico (bfcache): página já está pronta
+      w.addEventListener('pageshow', function (e) { if (e.persisted) { finish(); shown = 100; hide(); } });
+
+      w.requestAnimationFrame(tick);
+    })(document, window);
+  </script>
 
   <!-- Header -->
   <a class="skip-link" href="#main-content" data-i18n="skip-link">Pular para o conteúdo</a>
@@ -52,11 +144,11 @@
       </nav>
 
       <div class="header-actions">
-        <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:language-aria">
-          <button type="button" data-lang="pt" aria-pressed="true" aria-label="Português">PT</button>
+        <button type="button" class="lang-toggle" data-lang-toggle aria-label="Mudar idioma para inglês" data-i18n-attr="aria-label:language-toggle-aria">
+          <span class="lang-option" data-lang-option="pt" aria-hidden="true">PT</span>
           <span class="lang-sep" aria-hidden="true">/</span>
-          <button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
-        </div>
+          <span class="lang-option" data-lang-option="en" aria-hidden="true">EN</span>
+        </button>
 
         <button
           type="button"
@@ -90,40 +182,83 @@
             <button type="button" data-filter="itsm" aria-pressed="false"><span>ITSM</span><span class="filter-n" aria-hidden="true"></span></button>
             <button type="button" data-filter="automation" aria-pressed="false"><span data-i18n="filter-automation">Automação</span><span class="filter-n" aria-hidden="true"></span></button>
             <button type="button" data-filter="ai" aria-pressed="false"><span data-i18n="filter-ai">Chatbots e IA</span><span class="filter-n" aria-hidden="true"></span></button>
+            <span class="filter-bar" aria-hidden="true"></span>
           </div>
           <p class="filter-count label" id="filter-count" aria-live="polite"></p>
         </div>
       </div>
     </section>
 
-    <section class="block block--paper" aria-label="Lista de projetos" data-i18n-attr="aria-label:projects-list-aria">
+    <section class="block block--paper" aria-label="Projetos para clientes" data-i18n-attr="aria-label:projects-list-aria" data-case-section>
       <div class="container">
-        <div class="case-list rule-list">
+        <div class="case-group" data-case-group>
+          <p class="label case-group-label" data-i18n="cases-featured">Em destaque</p>
+          <div class="case-list">
 
-          <!-- SABIN -->
-          <article class="case" data-area="itsm" data-reveal>
+          <!-- IRANI -->
+          <article class="case" data-area="ai" data-reveal>
             <dl class="case-meta">
-              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">SABIN</dd></div>
-              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd>ITSM · GLPI</dd></div>
+              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">IRANI</dd></div>
+              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-5-area">Chatbots e IA · Genesys Cloud</dd></div>
               <div><dt data-i18n="case-period">Período</dt><dd class="mono" data-i18n="period-2025-now">2025–Atual</dd></div>
-              <div><dt>Site</dt><dd><a href="https://sabin.com.br/" target="_blank" rel="noopener">sabin.com.br</a></dd></div>
+              <div><dt>Site</dt><dd><a href="https://irani.com.br/" target="_blank" rel="noopener">irani.com.br</a></dd></div>
             </dl>
             <div class="case-body">
-              <h2 class="case-title" data-i18n="case-1-title">Sustentação de ITSM (GLPI)</h2>
-              <p class="case-lead" data-i18n="case-1-lead">Sustentação e evolução contínua do ambiente GLPI com foco em estabilidade, previsibilidade e experiência. Atendimento de chamados de 2º nível, governança do catálogo e otimizações recorrentes.</p>
-              <ul class="case-scope">
-                <li data-i18n="case-1-scope-1">Regras de negócio, campos condicionais e roteamento por filas;</li>
-                <li data-i18n="case-1-scope-2">Padronização de formulários, templates e checklists;</li>
-                <li data-i18n="case-1-scope-3">SLAs/OLAs, notificações e alertas operacionais;</li>
-                <li data-i18n="case-1-scope-4">Relatórios e KPIs no Power BI para tomadas de decisão.</li>
-              </ul>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-bot"/></svg></span>
+              <h2 class="case-title" data-i18n="case-5-title">Implementação e sustentação de chatbot (Genesys Cloud)</h2>
+              <p class="case-lead" data-i18n="case-5-lead">Assistente conversacional com dispatch para filas no Genesys, integrado a Teams e WhatsApp. Fluxo de conversa orientado por dados, transbordo humano e integrações a sistemas internos.</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">4</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-5-scope-1">Mapeamento de intents, entidades e jornadas de suporte;</li>
+                    <li data-i18n="case-5-scope-2">Roteamento e transbordo com contexto para as filas corretas;</li>
+                    <li data-i18n="case-5-scope-3">Mensagens padrão, linguagem consistente e coleta de feedback;</li>
+                    <li data-i18n="case-5-scope-4">Logs e métricas para tuning e melhoria contínua.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
                 <ul class="tag-list">
-                  <li>GLPI</li>
-                  <li>MySQL</li>
-                  <li>Power BI</li>
+                  <li>Genesys Cloud</li>
+                  <li>Teams</li>
+                  <li>WhatsApp</li>
                   <li>APIs</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Transcrição e avaliação de ligações -->
+          <article class="case" data-area="ai" data-reveal>
+            <dl class="case-meta">
+              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">Tecnocomp</dd></div>
+              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-6-area">Chatbots e IA · Automação</dd></div>
+              <div><dt data-i18n="case-period">Período</dt><dd class="case-empty"><span aria-hidden="true">—</span><span class="visually-hidden" data-i18n="case-not-informed">Não informado</span></dd></div>
+              <div><dt>Site</dt><dd><a href="https://tecnocomp.com.br/" target="_blank" rel="noopener">tecnocomp.com.br</a></dd></div>
+            </dl>
+            <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-bot"/></svg></span>
+              <h2 class="case-title" data-i18n="case-6-title">Transcrição e avaliação de ligações com IA</h2>
+              <p class="case-lead" data-i18n="case-6-lead">Automação que substitui a auditoria manual de qualidade por um processo automatizado de análise e pontuação de atendimentos, a partir da transcrição das ligações.</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">3</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-6-scope-1">Transcrição automática das ligações de atendimento;</li>
+                    <li data-i18n="case-6-scope-2">Análise e pontuação dos atendimentos com IA;</li>
+                    <li data-i18n="case-6-scope-3">Substituição da auditoria manual de qualidade.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
+                <ul class="tag-list">
+                  <li>GPT-4o</li>
+                  <li>Whisper</li>
                 </ul>
               </div>
             </div>
@@ -138,22 +273,71 @@
               <div><dt>Site</dt><dd><a href="https://gera.com.br/" target="_blank" rel="noopener">gera.com.br</a></dd></div>
             </dl>
             <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-ticket"/></svg></span>
               <h2 class="case-title" data-i18n="case-2-title">Implementação e sustentação de ITSM (GLPI)</h2>
               <p class="case-lead" data-i18n="case-2-lead">Implantação ponta a ponta com catálogo, SLAs e fluxos de aprovação. Operação assistida pós go-live, automações de triagem e relatórios recorrentes.</p>
-              <ul class="case-scope">
-                <li data-i18n="case-2-scope-1">Desenho de processos (Incidente, Requisição, Mudança);</li>
-                <li data-i18n="case-2-scope-2">Campos condicionais, formulários e validações;</li>
-                <li data-i18n="case-2-scope-3">Integrações essenciais (e-mail/Teams) e automações;</li>
-                <li data-i18n="case-2-scope-4">KPIs operacionais e governança de mudanças.</li>
-              </ul>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">4</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-2-scope-1">Desenho de processos (Incidente, Requisição, Mudança);</li>
+                    <li data-i18n="case-2-scope-2">Campos condicionais, formulários e validações;</li>
+                    <li data-i18n="case-2-scope-3">Integrações essenciais (e-mail/Teams) e automações;</li>
+                    <li data-i18n="case-2-scope-4">KPIs operacionais e governança de mudanças.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
                 <ul class="tag-list">
                   <li>GLPI</li>
                   <li>n8n</li>
                   <li>Power Automate</li>
                   <li>MySQL</li>
                   <li>Power BI</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          </div>
+        </div>
+
+        <div class="case-group" data-case-group>
+          <p class="label case-group-label" data-i18n="cases-more">Outros projetos para clientes</p>
+          <div class="case-list">
+
+          <!-- SABIN -->
+          <article class="case" data-area="itsm" data-reveal>
+            <dl class="case-meta">
+              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">SABIN</dd></div>
+              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd>ITSM · GLPI</dd></div>
+              <div><dt data-i18n="case-period">Período</dt><dd class="mono" data-i18n="period-2025-now">2025–Atual</dd></div>
+              <div><dt>Site</dt><dd><a href="https://sabin.com.br/" target="_blank" rel="noopener">sabin.com.br</a></dd></div>
+            </dl>
+            <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-ticket"/></svg></span>
+              <h2 class="case-title" data-i18n="case-1-title">Sustentação de ITSM (GLPI)</h2>
+              <p class="case-lead" data-i18n="case-1-lead">Sustentação e evolução contínua do ambiente GLPI com foco em estabilidade, previsibilidade e experiência. Atendimento de chamados de 2º nível, governança do catálogo e otimizações recorrentes.</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">4</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-1-scope-1">Regras de negócio, campos condicionais e roteamento por filas;</li>
+                    <li data-i18n="case-1-scope-2">Padronização de formulários, templates e checklists;</li>
+                    <li data-i18n="case-1-scope-3">SLAs/OLAs, notificações e alertas operacionais;</li>
+                    <li data-i18n="case-1-scope-4">Relatórios e KPIs no Power BI para tomadas de decisão.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
+                <ul class="tag-list">
+                  <li>GLPI</li>
+                  <li>MySQL</li>
+                  <li>Power BI</li>
+                  <li>APIs</li>
                 </ul>
               </div>
             </div>
@@ -168,47 +352,25 @@
               <div><dt>Site</dt><dd><a href="https://www.stoller.com.br/" target="_blank" rel="noopener">stoller.com.br</a></dd></div>
             </dl>
             <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-ticket"/></svg></span>
               <h2 class="case-title" data-i18n="case-3-title">Sustentação de ITSM (Serviceaide ISM)</h2>
               <p class="case-lead" data-i18n="case-3-lead">Sustentação com padronização de filas, perfis e regras automáticas. Foco em fluidez de atendimento, governança do catálogo e confiabilidade operacional.</p>
-              <ul class="case-scope">
-                <li data-i18n="case-3-scope-1">Estruturação de filas, papéis e matrizes de encaminhamento;</li>
-                <li data-i18n="case-3-scope-2">Ajustes de formulários e automações de rotina;</li>
-                <li data-i18n="case-3-scope-3">SLAs, notificações e alertas por criticidade;</li>
-                <li data-i18n="case-3-scope-4">Higienização de base (categorias, serviços, CIs).</li>
-              </ul>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">4</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-3-scope-1">Estruturação de filas, papéis e matrizes de encaminhamento;</li>
+                    <li data-i18n="case-3-scope-2">Ajustes de formulários e automações de rotina;</li>
+                    <li data-i18n="case-3-scope-3">SLAs, notificações e alertas por criticidade;</li>
+                    <li data-i18n="case-3-scope-4">Higienização de base (categorias, serviços, CIs).</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
                 <ul class="tag-list">
                   <li>Serviceaide ISM</li>
-                  <li>APIs</li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
-          <!-- IRANI -->
-          <article class="case" data-area="ai" data-reveal>
-            <dl class="case-meta">
-              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">IRANI</dd></div>
-              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-5-area">Chatbots e IA · Genesys Cloud</dd></div>
-              <div><dt data-i18n="case-period">Período</dt><dd class="mono" data-i18n="period-2025-now">2025–Atual</dd></div>
-              <div><dt>Site</dt><dd><a href="https://irani.com.br/" target="_blank" rel="noopener">irani.com.br</a></dd></div>
-            </dl>
-            <div class="case-body">
-              <h2 class="case-title" data-i18n="case-5-title">Implementação e sustentação de chatbot (Genesys Cloud)</h2>
-              <p class="case-lead" data-i18n="case-5-lead">Assistente conversacional com dispatch para filas no Genesys, integrado a Teams e WhatsApp. Fluxo de conversa orientado por dados, transbordo humano e integrações a sistemas internos.</p>
-              <ul class="case-scope">
-                <li data-i18n="case-5-scope-1">Mapeamento de intents, entidades e jornadas de suporte;</li>
-                <li data-i18n="case-5-scope-2">Roteamento e transbordo com contexto para as filas corretas;</li>
-                <li data-i18n="case-5-scope-3">Mensagens padrão, linguagem consistente e coleta de feedback;</li>
-                <li data-i18n="case-5-scope-4">Logs e métricas para tuning e melhoria contínua.</li>
-              </ul>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
-                <ul class="tag-list">
-                  <li>Genesys Cloud</li>
-                  <li>Teams</li>
-                  <li>WhatsApp</li>
                   <li>APIs</li>
                 </ul>
               </div>
@@ -224,16 +386,23 @@
               <div><dt>Site</dt><dd><a href="https://axiaagro.com/" target="_blank" rel="noopener">axiaagro.com</a></dd></div>
             </dl>
             <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-ticket"/></svg></span>
               <h2 class="case-title" data-i18n="case-4-title">Sustentação de ITSM (Serviceaide ISM)</h2>
               <p class="case-lead" data-i18n="case-4-lead">Sustentação com evolução de processos, administração da plataforma e atendimento de chamados. Regras e integrações para reduzir tempo de ciclo e aumentar a previsibilidade.</p>
-              <ul class="case-scope">
-                <li data-i18n="case-4-scope-1">Catálogo de serviços e padronização de formulários;</li>
-                <li data-i18n="case-4-scope-2">Regras automáticas e roteamento por filas;</li>
-                <li data-i18n="case-4-scope-3">SLAs/OLAs e notificações consistentes;</li>
-                <li data-i18n="case-4-scope-4">Relatórios operacionais e executivos.</li>
-              </ul>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">4</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-4-scope-1">Catálogo de serviços e padronização de formulários;</li>
+                    <li data-i18n="case-4-scope-2">Regras automáticas e roteamento por filas;</li>
+                    <li data-i18n="case-4-scope-3">SLAs/OLAs e notificações consistentes;</li>
+                    <li data-i18n="case-4-scope-4">Relatórios operacionais e executivos.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
                 <ul class="tag-list">
                   <li>Serviceaide ISM</li>
                   <li>APIs</li>
@@ -242,37 +411,31 @@
             </div>
           </article>
 
-          <!-- Transcrição e avaliação de ligações -->
-          <article class="case" data-area="ai" data-reveal>
-            <dl class="case-meta">
-              <div><dt data-i18n="case-type">Tipo</dt><dd class="case-client" data-i18n="type-delivery">Entrega na Tecnocomp</dd></div>
-              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-6-area">Chatbots e IA · Automação</dd></div>
-            </dl>
-            <div class="case-body">
-              <h2 class="case-title" data-i18n="case-6-title">Transcrição e avaliação de ligações com IA</h2>
-              <p class="case-lead" data-i18n="case-6-lead">Automação que substitui a auditoria manual de qualidade por um processo automatizado de análise e pontuação de atendimentos, a partir da transcrição das ligações.</p>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
-                <ul class="tag-list">
-                  <li>GPT-4o</li>
-                  <li>Whisper</li>
-                  <li><span data-i18n="case-6-stack">automação</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-
           <!-- Migração GLPI SSO/SAML -->
           <article class="case" data-area="itsm" data-reveal>
             <dl class="case-meta">
-              <div><dt data-i18n="case-type">Tipo</dt><dd class="case-client" data-i18n="type-delivery">Entrega na Tecnocomp</dd></div>
+              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">Tecnocomp</dd></div>
               <div><dt data-i18n="case-area">Área · Plataforma</dt><dd>ITSM · GLPI</dd></div>
+              <div><dt data-i18n="case-period">Período</dt><dd class="case-empty"><span aria-hidden="true">—</span><span class="visually-hidden" data-i18n="case-not-informed">Não informado</span></dd></div>
+              <div><dt>Site</dt><dd><a href="https://tecnocomp.com.br/" target="_blank" rel="noopener">tecnocomp.com.br</a></dd></div>
             </dl>
             <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-ticket"/></svg></span>
               <h2 class="case-title" data-i18n="case-7-title">Migração e validação estrutural do GLPI</h2>
               <p class="case-lead" data-i18n="case-7-lead">Migrações e validações estruturais em GLPI, incluindo integração de autenticação via SSO/SAML, importação de base de conhecimento e validação funcional entre versões da plataforma.</p>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">3</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-7-scope-1">Integração de autenticação via SSO/SAML;</li>
+                    <li data-i18n="case-7-scope-2">Importação da base de conhecimento;</li>
+                    <li data-i18n="case-7-scope-3">Validação funcional entre versões da plataforma.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
                 <ul class="tag-list">
                   <li>GLPI</li>
                   <li>SSO/SAML</li>
@@ -284,42 +447,87 @@
           <!-- Reset de senha Entra ID -->
           <article class="case" data-area="automation" data-reveal>
             <dl class="case-meta">
-              <div><dt data-i18n="case-type">Tipo</dt><dd class="case-client" data-i18n="type-case">Case técnico</dd></div>
+              <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client">Tecnocomp</dd></div>
               <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-8-area">Automação · Microsoft Entra ID</dd></div>
+              <div><dt data-i18n="case-period">Período</dt><dd class="case-empty"><span aria-hidden="true">—</span><span class="visually-hidden" data-i18n="case-not-informed">Não informado</span></dd></div>
+              <div><dt>Site</dt><dd><a href="https://tecnocomp.com.br/" target="_blank" rel="noopener">tecnocomp.com.br</a></dd></div>
             </dl>
             <div class="case-body">
+              <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-flow"/></svg></span>
               <h2 class="case-title" data-i18n="case-8-title">Automação de reset de senha</h2>
               <p class="case-lead" data-i18n="case-8-lead">Fluxo automatizado de redefinição de senha de usuários no Microsoft Entra ID via Microsoft Graph API, acionado a partir do canal de atendimento.</p>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
+              <details class="case-details">
+                <summary class="case-scope-toggle">
+                  <span data-i18n="case-scope-label">Escopo</span>
+                  <span class="case-scope-count">2</span>
+                </summary>
+                <ul class="case-scope">
+                    <li data-i18n="case-8-scope-1">Redefinição de senha no Microsoft Entra ID via Microsoft Graph API;</li>
+                    <li data-i18n="case-8-scope-2">Fluxo acionado a partir do canal de atendimento.</li>
+                </ul>
+              </details>
+              <div class="case-row case-stack">
+                <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
                 <ul class="tag-list">
                   <li>Microsoft Entra ID</li>
                   <li>Microsoft Graph API</li>
+                  <li>Chatwoot</li>
                 </ul>
               </div>
             </div>
           </article>
 
-          <!-- Assistente financeiro -->
-          <article class="case" data-area="ai" data-reveal>
-            <dl class="case-meta">
-              <div><dt data-i18n="case-type">Tipo</dt><dd class="case-client" data-i18n="type-case">Case técnico</dd></div>
-              <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-9-area">Chatbots e IA · Agente de IA</dd></div>
-            </dl>
-            <div class="case-body">
-              <h2 class="case-title" data-i18n="case-9-title">Assistente financeiro conversacional com IA</h2>
-              <p class="case-lead" data-i18n="case-9-lead">Agente de IA integrado a mensageria, com consulta a dados de mercado, memória de conversa e camada de recuperação de informação (RAG).</p>
-              <div class="case-stack">
-                <p class="label" data-i18n="case-stack">Tecnologias</p>
-                <ul class="tag-list">
-                  <li><span data-i18n="case-9-stack-1">Agente de IA</span></li>
-                  <li>RAG</li>
-                  <li><span data-i18n="case-9-stack-3">mensageria</span></li>
-                </ul>
-              </div>
-            </div>
-          </article>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="block" id="own-projects" aria-labelledby="own-projects-label" data-case-section>
+      <div class="container">
+        <div class="case-group" data-case-group>
+          <p class="label case-group-label" id="own-projects-label" data-i18n="cases-own">Projetos próprios</p>
+          <div class="case-list">
+
+            <!-- Assistente financeiro -->
+            <article class="case" data-area="ai" data-reveal>
+              <dl class="case-meta">
+                <div><dt data-i18n="case-client">Cliente</dt><dd class="case-client" data-i18n="client-own">Projeto próprio</dd></div>
+                <div><dt data-i18n="case-area">Área · Plataforma</dt><dd data-i18n="case-9-area">Chatbots e IA · Agente de IA</dd></div>
+                <div><dt data-i18n="case-period">Período</dt><dd class="case-empty"><span aria-hidden="true">—</span><span class="visually-hidden" data-i18n="case-not-informed">Não informado</span></dd></div>
+                <div><dt>Site</dt><dd><a href="https://portfolio-five-xi-37.vercel.app/" target="_blank" rel="noopener">portfolio-five-xi-37.vercel.app</a></dd></div>
+              </dl>
+              <div class="case-body">
+                <span class="spec-icon case-icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-bot"/></svg></span>
+                <h2 class="case-title" data-i18n="case-9-title">Assistente financeiro conversacional com IA</h2>
+                <p class="case-lead" data-i18n="case-9-lead">Agente de IA integrado a mensageria, com consulta a dados de mercado, memória de conversa e camada de recuperação de informação (RAG).</p>
+                <details class="case-details">
+                  <summary class="case-scope-toggle">
+                    <span data-i18n="case-scope-label">Escopo</span>
+                    <span class="case-scope-count">4</span>
+                  </summary>
+                  <ul class="case-scope">
+                      <li data-i18n="case-9-scope-1">Agente de IA integrado a mensageria;</li>
+                      <li data-i18n="case-9-scope-2">Consulta a dados de mercado;</li>
+                      <li data-i18n="case-9-scope-3">Memória de conversa;</li>
+                      <li data-i18n="case-9-scope-4">Camada de recuperação de informação (RAG).</li>
+                  </ul>
+                </details>
+                <div class="case-row case-stack">
+                  <p class="case-row-label" data-i18n="case-stack">Tecnologias</p>
+                  <ul class="tag-list">
+                    <li>n8n</li>
+                    <li>Telegram</li>
+                    <li>GPT-4o-mini</li>
+                    <li>Supabase (RAG)</li>
+                    <li>CoinGecko API</li>
+                    <li>SerpAPI</li>
+                    <li>OpenAI Vision</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
@@ -335,10 +543,38 @@
         </a>
 
         <ul class="footer-links" aria-label="Redes e contato" data-i18n-attr="aria-label:footer-social-aria">
-          <li><a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://github.com/Vinixz339" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:vinfranrocha@gmail.com" data-i18n="footer-email">E-mail</a></li>
+          <li>
+            <a href="https://www.linkedin.com/in/vin%C3%ADcius-franco-rocha-76267a221" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-linkedin"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Vinixz339" target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-github"/></svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:vinfranrocha@gmail.com">
+              <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-mail"/></svg>
+              <span data-i18n="footer-email">E-mail</span>
+            </a>
+          </li>
         </ul>
+      </div>
+
+      <div class="footer-mid">
+        <nav class="footer-nav" aria-label="Navegação do rodapé" data-i18n-attr="aria-label:footer-nav-aria">
+          <a class="text-link" href="index.html#about" data-i18n="nav-about">Sobre</a>
+          <a class="text-link" href="projetos.html" data-i18n="nav-projects">Projetos</a>
+          <a class="text-link" href="contato.html" data-i18n="nav-contact">Contato</a>
+          <a class="text-link" href="assets/docs/CV - Vinícius Franco Rocha.pdf" download="Vinicius_Franco_Rocha_CV.pdf" data-i18n="hero-btn-cv">Baixar CV</a>
+        </nav>
+        <a class="footer-top-link text-link" href="#main-content" data-back-to-top>
+          <span data-i18n="footer-back-top">Voltar ao topo</span>
+          <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg?v=2026-09-17-4#i-arrow-up"/></svg>
+        </a>
       </div>
 
       <div class="footer-bottom">
@@ -349,6 +585,6 @@
   </footer>
 
   <!-- JS principal (i18n, menu, motion, filtro) -->
-  <script src="js/script.js" defer></script>
+  <script src="js/script.js?v=2026-09-17-4" defer></script>
 </body>
 </html>

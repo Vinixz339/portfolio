@@ -5,11 +5,11 @@
    1) i18n — dicionário por chave { pt, en }
    2) Utilitários
    3) Motor de i18n
-   4) Navegação (âncoras, menu mobile)
+   4) Navegação (âncoras, menu mobile, header ao rolar, menu acompanhando a rolagem)
    5) Seletor de idioma (PT / EN)
-   6) Motion (reveals, nome animado, linha da timeline, cursor)
+   6) Motion (reveals, nome animado, linha e pulso da timeline, details animado, contagem, cursor, circuitos)
    7) Filtro de projetos
-   8) Formulário de contato
+   8) Formulário de contato e botão copiar
    9) Boot
    ======================================================================== */
 
@@ -35,29 +35,17 @@ const I18N = {
     'nav-about': 'Sobre',
     'nav-projects': 'Projetos',
     'nav-contact': 'Contato',
-    'language-aria': 'Idioma',
+    'language-toggle-aria': 'Mudar idioma para inglês',
     'menu-aria': 'Abrir menu principal',
 
     /* Hero */
     'hero-role-1': 'Analista de ITSM',
     'hero-role-2': 'Automação de processos',
     'hero-role-3': 'Inteligência artificial',
-    'hero-lead': 'Analista de ITSM com mais de 2 anos de experiência na administração, customização e sustentação de GLPI e Serviceaide ISM, integrando essas plataformas a automações e chatbots com IA.',
+    'hero-lead': 'Analista de ITSM com mais de 2 anos de experiência na administração, customização e sustentação de plataformas de service desk para clientes corporativos. Também atuo com inteligência artificial, no desenvolvimento de chatbots e agentes de IA.',
     'hero-btn-cv': 'Baixar CV',
     'hero-btn-projects': 'Ver projetos',
     'hero-btn-contact': 'Falar comigo',
-
-    'flow-type': 'Requisição',
-    'flow-step-1': 'Abertura',
-    'flow-step-2': 'Triagem automática',
-    'flow-step-2-detail': 'n8n · regras de categoria',
-    'flow-step-3': 'Aprovação do gestor',
-    'flow-step-3-detail': 'fluxo condicional',
-    'flow-step-4': 'Execução e fechamento',
-    'flow-step-4-detail': 'GLPI · notificação',
-    'flow-sla': 'SLA 8h úteis',
-    'flow-elapsed': '12 min decorridos',
-    'flow-caption': 'Fluxo ilustrativo de um chamado',
 
     'metric-1': 'anos em ITSM, automação e chatbots',
     'metric-2': 'clientes corporativos atendidos simultaneamente',
@@ -136,7 +124,7 @@ const I18N = {
     'projects-eyebrow': 'Portfólio',
     'projects-title': 'Projetos selecionados',
     'projects-lead': 'Casos reais em ITSM, automação de processos e chatbots com IA, entregues em modelo de consultoria e serviços gerenciados.',
-    'projects-list-aria': 'Lista de projetos',
+    'projects-list-aria': 'Projetos para clientes',
     'filter-aria': 'Filtrar por área',
     'filter-all': 'Todos',
     'filter-automation': 'Automação',
@@ -144,13 +132,10 @@ const I18N = {
     'filter-count-one': '1 projeto',
     'filter-count-many': '{n} projetos',
     'case-client': 'Cliente',
-    'case-type': 'Tipo',
     'case-area': 'Área · Plataforma',
     'case-period': 'Período',
     'case-stack': 'Tecnologias',
     'period-2025-now': '2025–Atual',
-    'type-delivery': 'Entrega na Tecnocomp',
-    'type-case': 'Case técnico',
 
     'case-1-title': 'Sustentação de ITSM (GLPI)',
     'case-1-lead': 'Sustentação e evolução contínua do ambiente GLPI com foco em estabilidade, previsibilidade e experiência. Atendimento de chamados de 2º nível, governança do catálogo e otimizações recorrentes.',
@@ -191,7 +176,6 @@ const I18N = {
     'case-6-area': 'Chatbots e IA · Automação',
     'case-6-title': 'Transcrição e avaliação de ligações com IA',
     'case-6-lead': 'Automação que substitui a auditoria manual de qualidade por um processo automatizado de análise e pontuação de atendimentos, a partir da transcrição das ligações.',
-    'case-6-stack': 'automação',
 
     'case-7-title': 'Migração e validação estrutural do GLPI',
     'case-7-lead': 'Migrações e validações estruturais em GLPI, incluindo integração de autenticação via SSO/SAML, importação de base de conhecimento e validação funcional entre versões da plataforma.',
@@ -203,8 +187,6 @@ const I18N = {
     'case-9-area': 'Chatbots e IA · Agente de IA',
     'case-9-title': 'Assistente financeiro conversacional com IA',
     'case-9-lead': 'Agente de IA integrado a mensageria, com consulta a dados de mercado, memória de conversa e camada de recuperação de informação (RAG).',
-    'case-9-stack-1': 'Agente de IA',
-    'case-9-stack-3': 'mensageria',
 
     /* Contato */
     'contact-eyebrow': 'Contato',
@@ -229,6 +211,40 @@ const I18N = {
     'form-success': 'Mensagem enviada. Retorno o contato em breve.',
     'form-error': 'Não foi possível enviar agora. Tente de novo ou escreva para vinfranrocha@gmail.com.',
 
+    /* Rodada 3: projetos padronizados (Cliente + Escopo) */
+    'client-own': 'Projeto próprio',
+    'case-not-informed': 'Não informado',
+    'case-scope-label': 'Escopo',
+    'case-6-scope-1': 'Transcrição automática das ligações de atendimento;',
+    'case-6-scope-2': 'Análise e pontuação dos atendimentos com IA;',
+    'case-6-scope-3': 'Substituição da auditoria manual de qualidade.',
+    'case-7-scope-1': 'Integração de autenticação via SSO/SAML;',
+    'case-7-scope-2': 'Importação da base de conhecimento;',
+    'case-7-scope-3': 'Validação funcional entre versões da plataforma.',
+    'case-8-scope-1': 'Redefinição de senha no Microsoft Entra ID via Microsoft Graph API;',
+    'case-8-scope-2': 'Fluxo acionado a partir do canal de atendimento.',
+    'case-9-scope-1': 'Agente de IA integrado a mensageria;',
+    'case-9-scope-2': 'Consulta a dados de mercado;',
+    'case-9-scope-3': 'Memória de conversa;',
+    'case-9-scope-4': 'Camada de recuperação de informação (RAG).',
+
+    /* Rodada 2: foto, faixa, destaques, contato, footer */
+    'photo-alt': 'Vinícius Franco Rocha',
+    'photo-caption-role': 'Tecnocomp · Pleno',
+    'feature-aria': 'Números e clientes',
+    'about-note-label': 'Reconhecimento',
+    'cases-featured': 'Em destaque',
+    'cases-more': 'Outros projetos para clientes',
+    'cases-own': 'Projetos próprios',
+    'case-more': 'Ver escopo',
+    'copy-label': 'Copiar',
+    'copy-done': 'Copiado',
+    'copy-email-aria': 'Copiar e-mail',
+    'copy-done-aria': 'E-mail copiado',
+    'form-response-time': 'Respondo em até 2 dias úteis.',
+    'footer-nav-aria': 'Navegação do rodapé',
+    'footer-back-top': 'Voltar ao topo',
+
     /* Footer */
     'footer-social-aria': 'Redes e contato',
     'footer-email': 'E-mail',
@@ -248,29 +264,17 @@ const I18N = {
     'nav-about': 'About',
     'nav-projects': 'Projects',
     'nav-contact': 'Contact',
-    'language-aria': 'Language',
+    'language-toggle-aria': 'Switch language to Portuguese',
     'menu-aria': 'Open main menu',
 
     /* Hero */
     'hero-role-1': 'ITSM Analyst',
     'hero-role-2': 'Process automation',
     'hero-role-3': 'Artificial intelligence',
-    'hero-lead': 'ITSM analyst with 2+ years of experience administering, customizing and supporting GLPI and Serviceaide ISM, integrating these platforms with automations and AI chatbots.',
+    'hero-lead': 'ITSM analyst with 2+ years of experience administering, customizing and supporting service desk platforms for corporate clients. I also work with artificial intelligence, building chatbots and AI agents.',
     'hero-btn-cv': 'Download CV',
     'hero-btn-projects': 'See projects',
     'hero-btn-contact': 'Get in touch',
-
-    'flow-type': 'Service request',
-    'flow-step-1': 'Opened',
-    'flow-step-2': 'Automated triage',
-    'flow-step-2-detail': 'n8n · category rules',
-    'flow-step-3': 'Manager approval',
-    'flow-step-3-detail': 'conditional flow',
-    'flow-step-4': 'Fulfillment and closure',
-    'flow-step-4-detail': 'GLPI · notification',
-    'flow-sla': 'SLA 8 business hours',
-    'flow-elapsed': '12 min elapsed',
-    'flow-caption': 'Illustrative ticket flow',
 
     'metric-1': 'years in ITSM, automation and chatbots',
     'metric-2': 'corporate clients served simultaneously',
@@ -349,7 +353,7 @@ const I18N = {
     'projects-eyebrow': 'Portfolio',
     'projects-title': 'Selected projects',
     'projects-lead': 'Real cases in ITSM, process automation and AI chatbots, delivered in a consulting and managed services model.',
-    'projects-list-aria': 'Project list',
+    'projects-list-aria': 'Client projects',
     'filter-aria': 'Filter by area',
     'filter-all': 'All',
     'filter-automation': 'Automation',
@@ -357,13 +361,10 @@ const I18N = {
     'filter-count-one': '1 project',
     'filter-count-many': '{n} projects',
     'case-client': 'Client',
-    'case-type': 'Type',
     'case-area': 'Area · Platform',
     'case-period': 'Period',
     'case-stack': 'Technologies',
     'period-2025-now': '2025–Present',
-    'type-delivery': 'Delivered at Tecnocomp',
-    'type-case': 'Technical case',
 
     'case-1-title': 'ITSM support (GLPI)',
     'case-1-lead': 'Continuous support and evolution of the GLPI environment, focused on stability, predictability and experience. Tier-2 tickets, catalog governance and recurring optimizations.',
@@ -404,7 +405,6 @@ const I18N = {
     'case-6-area': 'Chatbots and AI · Automation',
     'case-6-title': 'AI call transcription and evaluation',
     'case-6-lead': 'Automation that replaces manual quality audits with an automated process that analyzes and scores interactions from call transcripts.',
-    'case-6-stack': 'automation',
 
     'case-7-title': 'GLPI migration and structural validation',
     'case-7-lead': 'Migrations and structural validations in GLPI, including SSO/SAML authentication, knowledge base import and functional validation across platform versions.',
@@ -416,8 +416,6 @@ const I18N = {
     'case-9-area': 'Chatbots and AI · AI agent',
     'case-9-title': 'Conversational AI financial assistant',
     'case-9-lead': 'AI agent connected to messaging, with market data lookup, conversation memory and a retrieval layer (RAG).',
-    'case-9-stack-1': 'AI agent',
-    'case-9-stack-3': 'messaging',
 
     /* Contact */
     'contact-eyebrow': 'Contact',
@@ -441,6 +439,40 @@ const I18N = {
     'form-sending': 'Sending…',
     'form-success': 'Message sent. I’ll get back to you soon.',
     'form-error': 'The message couldn’t be sent. Try again or write to vinfranrocha@gmail.com.',
+
+    /* Round 3: standardized projects (Client + Scope) */
+    'client-own': 'Personal project',
+    'case-not-informed': 'Not provided',
+    'case-scope-label': 'Scope',
+    'case-6-scope-1': 'Automatic transcription of support calls;',
+    'case-6-scope-2': 'AI-based analysis and scoring of interactions;',
+    'case-6-scope-3': 'Replacement of manual quality audits.',
+    'case-7-scope-1': 'SSO/SAML authentication integration;',
+    'case-7-scope-2': 'Knowledge base import;',
+    'case-7-scope-3': 'Functional validation across platform versions.',
+    'case-8-scope-1': 'Password reset in Microsoft Entra ID via Microsoft Graph API;',
+    'case-8-scope-2': 'Flow triggered from the support channel.',
+    'case-9-scope-1': 'AI agent connected to messaging;',
+    'case-9-scope-2': 'Market data lookup;',
+    'case-9-scope-3': 'Conversation memory;',
+    'case-9-scope-4': 'Retrieval layer (RAG).',
+
+    /* Round 2: photo, band, featured, contact, footer */
+    'photo-alt': 'Vinícius Franco Rocha',
+    'photo-caption-role': 'Tecnocomp · Mid-level',
+    'feature-aria': 'Numbers and clients',
+    'about-note-label': 'Recognition',
+    'cases-featured': 'Featured',
+    'cases-more': 'More client projects',
+    'cases-own': 'Personal projects',
+    'case-more': 'View scope',
+    'copy-label': 'Copy',
+    'copy-done': 'Copied',
+    'copy-email-aria': 'Copy email',
+    'copy-done-aria': 'Email copied',
+    'form-response-time': 'I reply within 2 business days.',
+    'footer-nav-aria': 'Footer navigation',
+    'footer-back-top': 'Back to top',
 
     /* Footer */
     'footer-social-aria': 'Social and contact',
@@ -475,6 +507,16 @@ const reducedMotionQuery = window.matchMedia
 
 /* A classe html.motion é definida no <head>; é a fonte de verdade. */
 const motionEnabled = () => document.documentElement.classList.contains('motion');
+
+/* Executa quando a tela de carregamento terminar (ou já, se não houver tela).
+   Evita que animações de entrada rodem escondidas atrás dela. */
+const whenLoaded = (fn) => {
+  if (window.__vfrLoaded || !document.documentElement.classList.contains('is-loading')) {
+    fn();
+  } else {
+    document.addEventListener('vfr:loaded', fn, { once: true });
+  }
+};
 
 /* ========================================================================
    3) Motor de i18n
@@ -511,8 +553,9 @@ const setLanguage = (lang) => {
   applyI18n(normalized);
   document.documentElement.setAttribute('lang', VFR.htmlLang[normalized]);
 
-  document.querySelectorAll('.lang-switch [data-lang]').forEach((btn) => {
-    btn.setAttribute('aria-pressed', String(btn.dataset.lang === normalized));
+  // Toggle de idioma: marca a opção ativa (o aria-label vem do dicionário)
+  document.querySelectorAll('[data-lang-option]').forEach((opt) => {
+    opt.classList.toggle('is-active', opt.dataset.langOption === normalized);
   });
 
   document.dispatchEvent(new CustomEvent('vfr:langchange', { detail: { lang: normalized } }));
@@ -542,7 +585,9 @@ const initAnchors = () => {
     target.scrollIntoView({ behavior: motionEnabled() ? 'smooth' : 'auto', block: 'start' });
     history.pushState(null, '', url.hash);
 
-    if (link.classList.contains('skip-link')) target.focus({ preventScroll: true });
+    if (link.classList.contains('skip-link') || link.hasAttribute('data-back-to-top')) {
+      target.focus({ preventScroll: true });
+    }
   });
 };
 
@@ -581,13 +626,72 @@ const initMobileMenu = () => {
   setOpen(false);
 };
 
+/* Header: borda inferior só depois de começar a rolar (R10) */
+const initHeaderScroll = () => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    header.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+};
+
+/* Item ativo do menu acompanhando a rolagem (home)
+   data-spy="id1 id2" num link do menu: ele fica ativo (aria-current="location")
+   enquanto qualquer uma dessas seções cruza a faixa central da tela.
+   Não depende de motion: é informação de navegação, não animação. */
+const initScrollSpy = () => {
+  const links = document.querySelectorAll('.site-nav a[data-spy]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const inView = new Set();
+  const sections = new Map(); // id da seção → links que a acompanham
+
+  links.forEach((link) => {
+    link.dataset.spy.split(/\s+/).forEach((id) => {
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (!sections.has(section)) sections.set(section, []);
+      sections.get(section).push(link);
+    });
+  });
+
+  const render = () => {
+    links.forEach((link) => {
+      const ids = link.dataset.spy.split(/\s+/);
+      const active = ids.some((id) => inView.has(id));
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) inView.add(entry.target.id);
+      else inView.delete(entry.target.id);
+    });
+    render();
+  }, { rootMargin: '-45% 0px -50% 0px' }); // faixa de ~5% no meio da viewport
+
+  sections.forEach((_, section) => observer.observe(section));
+};
+
 /* ========================================================================
-   5) Seletor de idioma — dois botões PT / EN (aria-pressed)
+   5) Idioma — um único botão que alterna PT ⇄ EN
+   O botão inteiro é a área de clique; "PT / EN" é só indicação visual.
    ======================================================================== */
 const initLanguageSwitch = () => {
-  document.querySelectorAll('.lang-switch [data-lang]').forEach((btn) => {
+  document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      if (btn.dataset.lang !== currentLang) setLanguage(btn.dataset.lang);
+      setLanguage(currentLang === 'pt' ? 'en' : 'pt');
     });
   });
 };
@@ -708,12 +812,123 @@ const initTimelineLine = () => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
-  // <details> abrindo/fechando muda a altura da timeline
+  // <details> abrindo/fechando muda a altura da timeline (inclusive durante a animação)
   timeline.addEventListener('toggle', onScroll, true);
+  timeline.addEventListener('vfr:details-resize', onScroll);
   update();
 };
 
-/* 6.4 Cursor customizado
+/* 6.4 <details> com altura animada ao abrir e fechar
+   Sem motion, o <details> nativo abre/fecha na hora (nada é interceptado).
+   Com motion: o clique no <summary> anima a altura do conteúdo via Web
+   Animations API; ao fechar, só remove [open] quando a animação termina. */
+const initDetailsAnimation = () => {
+  if (!motionEnabled()) return;
+
+  document.querySelectorAll('details.timeline-details, details.case-details').forEach((details) => {
+    const summary = details.querySelector('summary');
+    const content = details.querySelector('summary + *');
+    if (!summary || !content) return;
+
+    let animation = null;
+    const DURATION = 380;
+    const EASING = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+    // Enquanto anima, avisa a timeline a cada frame para a linha acompanhar
+    const notifyWhileRunning = () => {
+      if (!animation) return;
+      details.dispatchEvent(new CustomEvent('vfr:details-resize', { bubbles: true }));
+      requestAnimationFrame(notifyWhileRunning);
+    };
+
+    const run = (from, to, onDone) => {
+      animation?.cancel();
+      details.classList.add('is-animating');
+      animation = content.animate(
+        [{ height: `${from}px`, opacity: from === 0 ? 0 : 1 }, { height: `${to}px`, opacity: to === 0 ? 0 : 1 }],
+        { duration: DURATION, easing: EASING }
+      );
+      requestAnimationFrame(notifyWhileRunning);
+      animation.onfinish = () => {
+        animation = null;
+        details.classList.remove('is-animating');
+        onDone?.();
+        details.dispatchEvent(new CustomEvent('vfr:details-resize', { bubbles: true }));
+      };
+      animation.oncancel = () => {
+        animation = null;
+        details.classList.remove('is-animating');
+      };
+    };
+
+    summary.addEventListener('click', (event) => {
+      if (!motionEnabled()) return; // reduced motion ligado com a página aberta: comportamento nativo
+      event.preventDefault();
+
+      if (!details.open) {
+        details.open = true;
+        run(0, content.offsetHeight);
+      } else {
+        const current = content.offsetHeight;
+        run(current, 0, () => { details.open = false; });
+      }
+    });
+  });
+};
+
+/* 6.5 Contagem das métricas (R2)
+   Sobe de 0 ao valor em 600 ms, uma única vez, quando a métrica ENTRA na tela
+   rolando. Se já estiver visível na carga, o número fica parado no valor final
+   (nunca mostra valor errado em print, prévia ou leitura rápida). */
+const initCountUp = () => {
+  const items = document.querySelectorAll('[data-count]');
+  if (!items.length || !motionEnabled() || !('IntersectionObserver' in window)) return;
+
+  const run = (el) => {
+    const to = Number(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    let start = null;
+    const step = (ts) => {
+      if (start === null) start = ts;
+      const p = Math.min((ts - start) / 600, 1);
+      const eased = 1 - (1 - p) ** 3;
+      el.textContent = `${Math.round(to * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  let initialPass = true;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+      if (!initialPass) run(entry.target);
+    });
+  }, { threshold: 0.6 });
+
+  items.forEach((el) => observer.observe(el));
+  // O primeiro callback do observer reporta o que já está na tela: esses não animam
+  setTimeout(() => { initialPass = false; }, 250);
+};
+
+/* 6.6 Pulso único no ponto do cargo atual (item 14, adaptado)
+   Dispara uma vez quando o cargo atual entra na tela, depois que a data e o
+   conteúdo terminaram de aparecer. */
+const initTimelinePulse = () => {
+  const current = document.querySelector('.timeline-item.is-current');
+  if (!current || !motionEnabled() || !('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    observer.disconnect();
+    setTimeout(() => current.classList.add('is-pulsing'), 650);
+  }, { threshold: 0.5, rootMargin: '0px 0px -15% 0px' });
+
+  observer.observe(current);
+};
+
+/* 6.7 Cursor customizado
    Anel que segue o ponteiro com lerp via rAF (o loop para quando assenta).
    Só em dispositivos com mouse (hover + pointer fine) e com motion ativo. */
 const initCursor = () => {
@@ -723,13 +938,16 @@ const initCursor = () => {
 
   const INTERACTIVE = 'a[href], button:not([disabled]), summary, label, select, [role="button"], [data-cursor="hover"]';
   const TEXT_INPUT = 'input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, [contenteditable="true"]';
-  const EASE = 0.2;
+  // O cursor do sistema fica oculto, então o customizado precisa acompanhar de perto
+  const EASE = 0.5;
+  const root = document.documentElement;
 
   const cursor = document.createElement('div');
   cursor.className = 'cursor is-hidden';
   cursor.setAttribute('aria-hidden', 'true');
-  cursor.innerHTML = '<div class="cursor-ring"></div>';
+  cursor.innerHTML = '<div class="cursor-ring"></div><div class="cursor-orbit"><span></span><span></span></div>';
   document.body.appendChild(cursor);
+  root.classList.add('has-custom-cursor');
 
   let targetX = 0;
   let targetY = 0;
@@ -738,6 +956,25 @@ const initCursor = () => {
   let raf = null;
   let active = false;
   let overText = false;
+
+  // Posição do ponteiro na página anterior: o cursor já aparece no lugar certo
+  // após trocar de página, sem precisar mexer o mouse (a seta do sistema está oculta)
+  const POS_KEY = 'vfr_cursor_pos';
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(POS_KEY) || 'null');
+    if (saved && Number.isFinite(saved.x) && Number.isFinite(saved.y)) {
+      targetX = x = saved.x;
+      targetY = y = saved.y;
+      active = true;
+      cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      cursor.classList.remove('is-hidden');
+    }
+  } catch { /* sessionStorage indisponível */ }
+  const savePos = () => {
+    try { sessionStorage.setItem(POS_KEY, JSON.stringify({ x: targetX, y: targetY })); } catch { /* ignora */ }
+  };
+  window.addEventListener('pagehide', savePos);
+  document.addEventListener('click', savePos, true);
 
   const place = () => {
     cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
@@ -767,7 +1004,7 @@ const initCursor = () => {
       y = targetY;
       place();
     }
-    cursor.classList.toggle('is-hidden', overText);
+    cursor.classList.remove('is-hidden');
     if (!raf) raf = requestAnimationFrame(render);
   };
 
@@ -775,9 +1012,10 @@ const initCursor = () => {
     const el = event.target instanceof Element ? event.target : null;
     if (!el) return;
     overText = !!el.closest(TEXT_INPUT);
+    // Campo de texto: vira barra vertical (cursor de texto), nunca some
+    cursor.classList.toggle('is-text', overText);
     cursor.classList.toggle('is-hover', !overText && !!el.closest(INTERACTIVE));
     cursor.classList.toggle('is-light', !!el.closest('[data-cursor="light"]'));
-    if (active) cursor.classList.toggle('is-hidden', overText);
   };
 
   window.addEventListener('pointermove', onMove, { passive: true });
@@ -790,6 +1028,7 @@ const initCursor = () => {
   });
 
   const disable = () => {
+    root.classList.remove('has-custom-cursor'); // devolve a seta do sistema
     cursor.remove();
     window.removeEventListener('pointermove', onMove);
     document.removeEventListener('pointerover', onOver);
@@ -797,6 +1036,283 @@ const initCursor = () => {
   };
   fineQuery.addEventListener?.('change', (event) => { if (!event.matches) disable(); });
   reducedMotionQuery.addEventListener?.('change', (event) => { if (event.matches) disable(); });
+};
+
+/* 6.8 Fundo: circuitos
+   Detalhe discreto só nas seções de fundo BRANCO: poucas trilhas de circuito (nós
+   quadrados, ligações em "L" com quinas arredondadas), concentradas nas laterais,
+   longe do texto. Pulsos de energia percorrem as trilhas de forma contínua
+   (movimento por tempo real, rastro que se apaga aos poucos, nós acendendo de leve
+   quando a energia passa) e a rede acompanha levemente o cursor.
+   Um <canvas> por seção; um único loop que só desenha seções visíveis e pausa com a
+   aba oculta. Com "reduzir movimento": circuito parado, sem pulsos nem parallax. */
+const initNetwork = () => {
+  // Fundos brancos: hero, intro das páginas internas e seções .block sem variação de cor
+  const sections = Array.from(document.querySelectorAll('.hero, .block'))
+    .filter((s) => !s.classList.contains('block--paper') && !s.classList.contains('feature-band'));
+  if (!sections.length) return;
+
+  const animate = motionEnabled();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const rgb = getComputedStyle(document.documentElement).getPropertyValue('--network').trim() || '15, 114, 133';
+
+  const CELL = 150;          // célula da grade (px)
+  const NODE_CHANCE = 0.16;  // poucos nós: é só um detalhe
+  const SNAP = 4;
+  const CORNER = 8;          // raio das quinas das trilhas
+  const TRAIL = 70;          // comprimento do rastro do pulso (px)
+
+  let pointerX = 0;
+  let pointerY = 0;
+  let parallaxX = 0;
+  let parallaxY = 0;
+  if (animate) {
+    window.addEventListener('pointermove', (e) => {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      pointerX = e.clientX / window.innerWidth - 0.5;
+      pointerY = e.clientY / window.innerHeight - 0.5;
+    }, { passive: true });
+  }
+
+  const snap = (v) => Math.round(v / SNAP) * SNAP;
+  const smooth = (t) => t * t * (3 - 2 * t);
+
+  // Mais presente nas laterais, quase invisível no centro (onde fica o texto)
+  const edgeWeight = (x, w) => {
+    const fromCenter = Math.abs(x - w / 2) / (w / 2); // 0 no centro, 1 na borda
+    return 0.12 + 0.88 * smooth(Math.min(1, Math.max(0, (fromCenter - 0.35) / 0.5)));
+  };
+
+  // Ponto a uma distância d numa trilha em L (horizontal até a quina, depois vertical)
+  const pointOn = (link, d) => {
+    const { a, b } = link;
+    const h = Math.abs(b.x - a.x);
+    if (d <= h) return { x: a.x + Math.sign(b.x - a.x) * d, y: a.y };
+    return { x: b.x, y: a.y + Math.sign(b.y - a.y) * (d - h) };
+  };
+
+  const fields = sections.map((section) => {
+    const canvas = document.createElement('canvas');
+    canvas.className = 'network-canvas';
+    canvas.setAttribute('aria-hidden', 'true');
+    section.prepend(canvas);
+    return { section, canvas, ctx: canvas.getContext('2d'), nodes: [], links: [], pulses: [], w: 0, h: 0, visible: false };
+  });
+
+  const build = (field) => {
+    const rect = field.section.getBoundingClientRect();
+    field.w = Math.max(1, Math.round(rect.width));
+    field.h = Math.max(1, Math.round(rect.height));
+    field.canvas.width = field.w * dpr;
+    field.canvas.height = field.h * dpr;
+    field.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const cols = Math.ceil(field.w / CELL) + 1;
+    const rows = Math.ceil(field.h / CELL) + 1;
+    const nodes = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = snap(c * CELL + CELL * (0.2 + Math.random() * 0.6));
+        // Menos nós perto do centro
+        if (Math.random() > NODE_CHANCE * (0.3 + 0.7 * edgeWeight(x, field.w))) continue;
+        nodes.push({ x, y: snap(r * CELL + CELL * (0.2 + Math.random() * 0.6)), hub: Math.random() < 0.2, energy: 0, links: [] });
+      }
+    }
+
+    const links = [];
+    const seen = new Set();
+    nodes.forEach((n, i) => {
+      nodes
+        .map((m, j) => ({ j, d: Math.abs(m.x - n.x) + Math.abs(m.y - n.y) }))
+        .filter((o) => o.j !== i && o.d < CELL * 2.4)
+        .sort((p, q) => p.d - q.d)
+        .slice(0, 1 + (Math.random() < 0.35 ? 1 : 0))
+        .forEach(({ j }) => {
+          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+          if (seen.has(key)) return;
+          seen.add(key);
+          const link = { a: n, b: nodes[j], length: Math.abs(nodes[j].x - n.x) + Math.abs(nodes[j].y - n.y) };
+          if (link.length < 1) return;
+          links.push(link);
+          n.links.push(link);
+          nodes[j].links.push(link);
+        });
+    });
+
+    // Poucos pulsos, velocidades levemente diferentes (px por segundo)
+    const pulses = animate && links.length
+      ? Array.from({ length: Math.max(1, Math.round(links.length / 4)) }, () => {
+        const link = links[Math.floor(Math.random() * links.length)];
+        return { link, d: Math.random() * link.length, forward: Math.random() < 0.5, speed: 38 + Math.random() * 26, history: [] };
+      })
+      : [];
+
+    Object.assign(field, { nodes, links, pulses });
+  };
+
+  const traceLinks = (ctx, links) => {
+    links.forEach(({ a, b }) => {
+      const r = Math.min(CORNER, Math.abs(b.x - a.x) / 2, Math.abs(b.y - a.y) / 2);
+      ctx.moveTo(a.x + 0.5, a.y + 0.5);
+      if (r > 0.5) {
+        ctx.arcTo(b.x + 0.5, a.y + 0.5, b.x + 0.5, b.y + 0.5, r);
+      } else {
+        ctx.lineTo(b.x + 0.5, a.y + 0.5);
+      }
+      ctx.lineTo(b.x + 0.5, b.y + 0.5);
+    });
+  };
+
+  // Avança o pulso por distância, passando de uma trilha para a próxima sem parar
+  const advance = (p, dist) => {
+    let remaining = dist;
+    let guard = 0;
+    while (remaining > 0 && guard++ < 8) {
+      const toEnd = p.forward ? p.link.length - p.d : p.d;
+      if (remaining < toEnd) {
+        p.d += p.forward ? remaining : -remaining;
+        remaining = 0;
+      } else {
+        remaining -= toEnd;
+        const node = p.forward ? p.link.b : p.link.a;
+        node.energy = 1; // o nó acende quando a energia chega
+        const options = node.links.filter((l) => l !== p.link);
+        const next = options.length ? options[Math.floor(Math.random() * options.length)] : p.link;
+        p.forward = next.a === node;
+        p.d = p.forward ? 0 : next.length;
+        p.link = next;
+      }
+    }
+  };
+
+  const draw = (field, dt) => {
+    const { ctx, w, h } = field;
+    ctx.clearRect(0, 0, w, h);
+    ctx.save();
+    ctx.translate(parallaxX * 18, parallaxY * 12);
+
+    // Trilhas: bem suaves, mais fortes nas laterais (gradiente horizontal)
+    const grad = ctx.createLinearGradient(0, 0, w, 0);
+    grad.addColorStop(0, `rgba(${rgb}, 0.16)`);
+    grad.addColorStop(0.3, `rgba(${rgb}, 0.03)`);
+    grad.addColorStop(0.7, `rgba(${rgb}, 0.03)`);
+    grad.addColorStop(1, `rgba(${rgb}, 0.16)`);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = grad;
+    ctx.beginPath();
+    traceLinks(ctx, field.links);
+    ctx.stroke();
+
+    // Nós (acendem e apagam suavemente)
+    field.nodes.forEach((n) => {
+      const k = edgeWeight(n.x, w);
+      if (animate && n.energy > 0) n.energy = Math.max(0, n.energy - dt * 1.4);
+      const glow = n.energy;
+      if (glow > 0.01) {
+        ctx.fillStyle = `rgba(${rgb}, ${0.1 * glow * k})`;
+        ctx.fillRect(n.x - 7, n.y - 7, 15, 15);
+      }
+      ctx.fillStyle = `rgba(${rgb}, ${(0.22 + 0.45 * glow) * k})`;
+      ctx.strokeStyle = ctx.fillStyle;
+      if (n.hub) {
+        ctx.strokeRect(n.x - 4.5, n.y - 4.5, 10, 10);
+        ctx.fillRect(n.x - 1, n.y - 1, 3, 3);
+      } else {
+        ctx.fillRect(n.x - 2, n.y - 2, 5, 5);
+      }
+    });
+
+    // Pulsos: rastro contínuo que se apaga do fim para a cabeça
+    field.pulses.forEach((p) => {
+      if (animate) advance(p, p.speed * dt);
+      const head = pointOn(p.link, p.d);
+      p.history.unshift(head);
+      // guarda pontos suficientes para cobrir o rastro
+      let len = 0;
+      for (let i = 1; i < p.history.length; i++) {
+        len += Math.hypot(p.history[i].x - p.history[i - 1].x, p.history[i].y - p.history[i - 1].y);
+        if (len > TRAIL) { p.history.length = i + 1; break; }
+      }
+      const k = edgeWeight(head.x, w);
+      for (let i = 1; i < p.history.length; i++) {
+        const t = 1 - i / p.history.length; // 1 na cabeça → 0 no fim
+        ctx.strokeStyle = `rgba(${rgb}, ${0.5 * t * t * k})`;
+        ctx.lineWidth = 1 + t;
+        ctx.beginPath();
+        ctx.moveTo(p.history[i - 1].x + 0.5, p.history[i - 1].y + 0.5);
+        ctx.lineTo(p.history[i].x + 0.5, p.history[i].y + 0.5);
+        ctx.stroke();
+      }
+      // cabeça com brilho suave
+      ctx.fillStyle = `rgba(${rgb}, ${0.18 * k})`;
+      ctx.beginPath();
+      ctx.arc(head.x + 0.5, head.y + 0.5, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = `rgba(${rgb}, ${0.8 * k})`;
+      ctx.beginPath();
+      ctx.arc(head.x + 0.5, head.y + 0.5, 1.6, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.restore();
+  };
+
+  fields.forEach((field) => { build(field); draw(field, 0); });
+
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver((entries) => {
+      entries.forEach((entry) => {
+        const field = fields.find((f) => f.section === entry.target);
+        if (!field) return;
+        const rect = entry.target.getBoundingClientRect();
+        if (Math.abs(Math.round(rect.width) - field.w) > 2 || Math.abs(Math.round(rect.height) - field.h) > 2) {
+          build(field);
+          draw(field, 0);
+        }
+      });
+    });
+    fields.forEach((field) => ro.observe(field.section));
+  }
+
+  if (!animate) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const field = fields.find((f) => f.section === entry.target);
+      if (field) field.visible = entry.isIntersecting;
+    });
+  }, { rootMargin: '100px 0px' });
+  fields.forEach((field) => io.observe(field.section));
+
+  let raf = null;
+  let last = 0;
+  const loop = (now) => {
+    // dt em segundos, limitado para não "pular" depois de a aba voltar
+    const dt = last ? Math.min((now - last) / 1000, 0.05) : 0;
+    last = now;
+    const ease = 1 - Math.pow(0.001, dt); // suavização do parallax independente do FPS
+    parallaxX += (pointerX - parallaxX) * ease;
+    parallaxY += (pointerY - parallaxY) * ease;
+    fields.forEach((field) => { if (field.visible) draw(field, dt); });
+    raf = requestAnimationFrame(loop);
+  };
+  raf = requestAnimationFrame(loop);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(raf);
+      raf = null;
+    } else if (!raf) {
+      last = 0;
+      raf = requestAnimationFrame(loop);
+    }
+  });
+
+  reducedMotionQuery.addEventListener?.('change', (event) => {
+    if (!event.matches) return;
+    cancelAnimationFrame(raf);
+    raf = null;
+  });
 };
 
 /* ========================================================================
@@ -826,6 +1342,15 @@ const initProjectFilter = () => {
       : t('filter-count-many').replace('{n}', visible);
   };
 
+  // Traço único que desliza até o botão ativo (item 12)
+  const bar = document.querySelector('.filter-bar');
+  const moveBar = () => {
+    const current = Array.from(buttons).find((btn) => btn.dataset.filter === active);
+    if (!bar || !current) return;
+    bar.style.width = `${current.offsetWidth}px`;
+    bar.style.transform = `translateX(${current.offsetLeft}px)`;
+  };
+
   const apply = (filter, { animate = true } = {}) => {
     active = filter;
     buttons.forEach((btn) => btn.setAttribute('aria-pressed', String(btn.dataset.filter === filter)));
@@ -840,18 +1365,38 @@ const initProjectFilter = () => {
         item.classList.add('is-filtered-in');
       }
     });
+    // Grupo ("Em destaque" / "Outros projetos") sem nenhum caso visível some inteiro
+    document.querySelectorAll('[data-case-group]').forEach((group) => {
+      group.hidden = !group.querySelector('.case:not([hidden])');
+    });
+    // Seção (clientes / próprios) sem nenhum caso visível também some
+    document.querySelectorAll('[data-case-section]').forEach((section) => {
+      section.hidden = !section.querySelector('.case:not([hidden])');
+    });
     updateCount();
+    moveBar();
   };
 
   buttons.forEach((btn) => btn.addEventListener('click', () => {
     if (btn.dataset.filter !== active) apply(btn.dataset.filter);
   }));
-  document.addEventListener('vfr:langchange', updateCount);
+  document.addEventListener('vfr:langchange', () => {
+    updateCount();
+    moveBar(); // a largura do botão muda com o idioma
+  });
+  window.addEventListener('resize', moveBar, { passive: true });
+  document.fonts?.ready.then(moveBar);
   apply(active, { animate: false });
+  // Posição inicial sem animar o traço
+  if (bar) {
+    bar.style.transition = 'none';
+    moveBar();
+    requestAnimationFrame(() => { bar.style.transition = ''; });
+  }
 };
 
 /* ========================================================================
-   8) Formulário de contato (FormSubmit via AJAX, com fallback de POST)
+   8) Formulário de contato e botão copiar (FormSubmit via AJAX, com fallback de POST)
    ======================================================================== */
 const initContactForm = () => {
   const form = document.querySelector('form.contact-form');
@@ -871,6 +1416,12 @@ const initContactForm = () => {
     if (!statusEl) return;
     statusEl.textContent = key ? t(key) : '';
     statusEl.dataset.state = type || '';
+    // Reinicia o fade de entrada a cada mudança de status (item 15)
+    statusEl.classList.remove('is-shown');
+    if (key) {
+      void statusEl.offsetWidth;
+      statusEl.classList.add('is-shown');
+    }
   };
 
   const setLoading = (isLoading) => {
@@ -917,6 +1468,51 @@ const initContactForm = () => {
   });
 };
 
+/* Botão "Copiar" (e-mail na página de contato)
+   Copia o valor, troca ícone e texto por "Copiado" por 1,6 s e anuncia a troca
+   pelo aria-label. Sem API de clipboard (http sem TLS, navegador antigo), o botão
+   seleciona o texto do link ao lado para o usuário copiar manualmente. */
+const initCopyButtons = () => {
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    const text = btn.querySelector('.copy-btn-text');
+    const use = btn.querySelector('use');
+    let timer = null;
+
+    const showDone = () => {
+      clearTimeout(timer);
+      btn.classList.add('is-done');
+      if (text) text.textContent = t('copy-done');
+      use?.setAttribute('href', use.getAttribute('href').replace('#i-copy', '#i-check'));
+      btn.setAttribute('aria-label', t('copy-done-aria'));
+      timer = setTimeout(() => {
+        btn.classList.remove('is-done');
+        if (text) text.textContent = t('copy-label');
+        use?.setAttribute('href', use.getAttribute('href').replace('#i-check', '#i-copy'));
+        btn.setAttribute('aria-label', t('copy-email-aria'));
+      }, 1600);
+    };
+
+    const selectFallback = () => {
+      const value = btn.closest('.channel')?.querySelector('.channel-value');
+      if (!value) return;
+      const range = document.createRange();
+      range.selectNodeContents(value);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+    };
+
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        showDone();
+      } catch {
+        selectFallback();
+      }
+    });
+  });
+};
+
 /* ========================================================================
    9) Boot
    ======================================================================== */
@@ -926,14 +1522,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initAnchors();
   initMobileMenu();
+  initHeaderScroll();
+  initScrollSpy();
 
-  initKineticTitle();
-  initReveal();
+  // Entradas animadas começam só quando a tela de carregamento some
+  whenLoaded(() => {
+    initKineticTitle();
+    initReveal();
+    initCountUp();
+  });
   initTimelineLine();
+  initTimelinePulse();
+  initDetailsAnimation();
   initCursor();
+  initNetwork();
+
+  // Contagem de "Ambientes atendidos" sempre igual ao número de nomes na lista
+  document.querySelectorAll('[data-client-count]').forEach((el) => {
+    const list = el.closest('.client-strip')?.querySelector('.client-list');
+    if (list) el.textContent = String(list.children.length);
+  });
 
   initProjectFilter();
   initContactForm();
+  initCopyButtons();
 
   window.__vfrReady = true;
 });
